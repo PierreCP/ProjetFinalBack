@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Service;
 
@@ -29,11 +28,5 @@ public abstract class Person {
 	private int age;
 	private String adresse;
 	
-	@ManyToOne
-	private Admin admin;
-	@ManyToOne
-	private Consommateur consommateur;
-	@ManyToOne
-	private Producteur producteur;
 
 }
