@@ -12,11 +12,9 @@ import fr.solutec.repository.PersonRepo;
 @SpringBootApplication
 public class ProjetFinalApplication implements CommandLineRunner {
 	@Autowired
-	private static PersonRepo pr;
+	private PersonRepo pr;
 	
-
 	public static void main(String[] args) {
-		
 		SpringApplication.run(ProjetFinalApplication.class, args);
 		System.out.println("Lancement terminé");
 	}
