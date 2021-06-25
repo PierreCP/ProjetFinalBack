@@ -72,6 +72,12 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		produitRepo.save(pr2);
 		Produit pr3 = new Produit(null, "bière", "Bière Cuvée des Trolls 8° 1L", 150, 6.77F, null, t3);
 		produitRepo.save(pr3);
+		Produit pr4 = new Produit(null, "Vacherin", "Vacherin des montagnes affiné", 2, 4.86F, null, t2);
+		produitRepo.save(pr4);
+		Produit pr5 = new Produit(null, "Chevre", "Chèvre frais aux épices douces", 10, 3.45F, null, t2);
+		produitRepo.save(pr5);
+		Produit pr6 = new Produit(null, "Comté", "Comté affiné 18 mois", 8, 8.52F, null, t2);
+		produitRepo.save(pr6);
 		
 	}
 
