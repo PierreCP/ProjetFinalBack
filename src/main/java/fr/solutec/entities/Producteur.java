@@ -20,12 +20,13 @@ public class Producteur extends Person{
 	
 	@ManyToOne
 	private Produit produit;
-	
-	public Producteur(Long id, String nom, String prenom, String login, String mdp, int age, String adresse,
-			Admin admin, Consommateur consommateur, Producteur producteur) {
-		super(id, nom, prenom, login, mdp, age, adresse, admin, consommateur, producteur);
+
+	public Producteur(Long id, String nom, String prenom, String login, String mdp, int age, String adresse) {
+		super(id, nom, prenom, login, mdp, age, adresse);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 	
 

@@ -15,11 +15,12 @@ public class Admin extends Person{
 	@Id @GeneratedValue
 	private Long id;
 
-	public Admin(Long id, String nom, String prenom, String login, String mdp, int age, String adresse, Admin admin,
-			Consommateur consommateur, Producteur producteur) {
-		super(id, nom, prenom, login, mdp, age, adresse, admin, consommateur, producteur);
+	public Admin(Long id, String nom, String prenom, String login, String mdp, int age, String adresse) {
+		super(id, nom, prenom, login, mdp, age, adresse);
 		// TODO Auto-generated constructor stub
 	}
+
+	
 	
 	
 }
