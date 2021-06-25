@@ -8,47 +8,56 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Admin;
 import fr.solutec.entities.Consommateur;
+import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.TypeProduit;
-import fr.solutec.repository.PersonRepo;
+import fr.solutec.repository.AdminRepository;
+import fr.solutec.repository.ConsommateurRepository;
+import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepo;
 import fr.solutec.repository.TypeProduitRepository;
 
 @SpringBootApplication
 public class ProjetFinalApplication implements CommandLineRunner {
-	@Autowired
-	private PersonRepo personRepo;
+	
 	@Autowired
 	private ProduitRepo produitRepo;
 	@Autowired
 	private TypeProduitRepository tpRepo;
+	@Autowired
+	private AdminRepository adminRepo;
+	@Autowired
+	private ConsommateurRepository consommateurRepo;
+	@Autowired
+	private ProducteurRepository producteurRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
 		System.out.println("Lancement terminé");
+		
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Creation/Update de la BDD");
 		
-		Admin a1 = new Admin(null, "Jean", "Test", "1", "0", 10, "13 rue du test");
-		personRepo.save(a1);
+		Admin a1 = new Admin(null, new Person(null,"Jean", "Test", "1", "0", 10, "13 rue du test"));
+		adminRepo.save(a1);
 		
-		Consommateur c1 = new Consommateur(null, "ALBERT", "Geoffrey", "geof", "geof123", 23, "27 rue des sports");
-		personRepo.save(c1);
-		Consommateur c2 = new Consommateur(null, "CHARPENTIER", "Pierre", "pier", "pier123", 36, "15 avenue de la libération");
-		personRepo.save(c2);
-		Consommateur c3 = new Consommateur(null, "MORISSET", "Guillaume", "gui", "gui123", 54, "3 rue du code");
-		personRepo.save(c3);
+		Consommateur c1 = new Consommateur(null, new Person(null,"ALBERT", "Geoffrey", "geof", "geof123", 23, "27 rue des sports"));
+		consommateurRepo.save(c1);
+		Consommateur c2 = new Consommateur(null,new Person(null,"ALBERT", "Geoffrey", "geof", "geof123", 23, "27 rue des sports"));
+		consommateurRepo.save(c2);
+		Consommateur c3 = new Consommateur(null, new Person(null,"MORISSET", "Guillaume", "gui", "gui123", 54, "3 rue du code"));
+		consommateurRepo.save(c3);
 		
-		Producteur p1 = new Producteur(null, "BANKA", "Joel", "jojo", "jojo123", 84, "87 rue de France");
-		personRepo.save(p1);
-		Producteur p2 = new Producteur(null, "BONHOMME", "Clovis", "clo", "clo123", 42, "22 rue d'angular");
-		personRepo.save(p2);
-		Producteur p3 = new Producteur(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, "14 rue de Java");
-		personRepo.save(p3);
+		Producteur p1 = new Producteur(null, "bonjour", new Person(null,"BANKA", "Joel", "jojo", "jojo123", 84, "87 rue de France"),null);
+		producteurRepo.save(p1);
+		Producteur p2 = new Producteur(null,null, new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, "22 rue d'angular"),null);
+		producteurRepo.save(p2);
+		Producteur p3 = new Producteur(null,null, new Person(null,"TERNEYRE", "Benoit", "ben", "ben123", 84, "14 rue de Java"), null);
+		producteurRepo.save(p3);
 		
 		TypeProduit t1 = new TypeProduit(null, "Légumes", "Ici c'est la catégorie légumes");
 		tpRepo.save(t1);
