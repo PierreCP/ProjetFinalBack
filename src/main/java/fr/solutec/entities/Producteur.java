@@ -1,5 +1,6 @@
 package fr.solutec.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ public class Producteur{
 	private Long id;
 	private String nomMagasin;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	private Person person;
 	
 	@ManyToOne

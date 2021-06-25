@@ -15,14 +15,14 @@ import fr.solutec.entities.TypeProduit;
 import fr.solutec.repository.AdminRepository;
 import fr.solutec.repository.ConsommateurRepository;
 import fr.solutec.repository.ProducteurRepository;
-import fr.solutec.repository.ProduitRepo;
+import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.TypeProduitRepository;
 
 @SpringBootApplication
 public class ProjetFinalApplication implements CommandLineRunner {
 	
 	@Autowired
-	private ProduitRepo produitRepo;
+	private ProduitRepository produitRepo;
 	@Autowired
 	private TypeProduitRepository tpRepo;
 	@Autowired
