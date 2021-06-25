@@ -6,12 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@DiscriminatorValue("A")
-@NoArgsConstructor @AllArgsConstructor
-public class Admin extends Person{
+@DiscriminatorValue("C")
+@AllArgsConstructor @NoArgsConstructor @Data
+
+public class Consommateur extends Person{
 	@Id @GeneratedValue
 	private Long id;
 }

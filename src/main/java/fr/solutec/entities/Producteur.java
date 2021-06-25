@@ -6,12 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@DiscriminatorValue("A")
-@NoArgsConstructor @AllArgsConstructor
-public class Admin extends Person{
+@DiscriminatorValue("P")
+@AllArgsConstructor @NoArgsConstructor @Data
+public class Producteur extends Person{
 	@Id @GeneratedValue
 	private Long id;
+	private String nomMagasin;
+
 }
