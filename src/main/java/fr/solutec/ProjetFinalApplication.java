@@ -25,7 +25,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		//Produit p1 = new Produit(null, "patate", "dans la terrre", 3, (float) 2.5, "hiver", null);
 		//pror.save(p1);
 		
-		Admin a1 = new Admin(null, "Jean", "Test", "1", "0", 10, "13 rue du test");
+		Admin a1 = new Admin(null, "Jean", "Test", "1", "0", 10, "14 rue du test");
 		pr.save(a1);
 		
 	}
