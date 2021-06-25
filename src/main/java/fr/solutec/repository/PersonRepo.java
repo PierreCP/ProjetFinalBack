@@ -1,5 +1,11 @@
 package fr.solutec.repository;
 
-public interface PersonRepo {
+import java.util.Optional;
 
+import org.springframework.data.repository.CrudRepository;
+
+import fr.solutec.entities.Person;
+
+public interface PersonRepo extends CrudRepository<Person, Long>{
+	public Optional<Person> findByLoginAndMdp(String login, String mdp);
 }
