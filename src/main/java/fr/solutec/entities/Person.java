@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor @NoArgsConstructor @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "person_type")
-public abstract class Person {
+public class Person {
 	@Id @GeneratedValue
 	private Long id;
 	private String nom;
@@ -26,5 +26,4 @@ public abstract class Person {
 	private int age;
 	private String adresse;
 	
-
 }
