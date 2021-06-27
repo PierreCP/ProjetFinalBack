@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Person;
-import fr.solutec.repository.PersonRepo;
+import fr.solutec.repository.PersonRepository;
 
 
 
@@ -21,7 +21,7 @@ import fr.solutec.repository.PersonRepo;
 public class PersonRest {
 
 	@Autowired
-	private PersonRepo pr;
+	private PersonRepository pr;
 
 	@PostMapping("person")
 	public Person savePerson(@RequestBody Person p) {
