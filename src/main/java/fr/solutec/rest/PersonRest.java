@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Person;
+import fr.solutec.entities.Producteur;
+import fr.solutec.entities.Produit;
 import fr.solutec.repository.PersonRepository;
+import fr.solutec.repository.ProducteurRepository;
 
 
 
@@ -22,6 +25,9 @@ public class PersonRest {
 
 	@Autowired
 	private PersonRepository pr;
+	
+	@Autowired
+	private ProducteurRepository prodRepo;
 
 	@PostMapping("person")
 	public Person savePerson(@RequestBody Person p) {
@@ -36,6 +42,24 @@ public class PersonRest {
 	@GetMapping("person/{id}")
 	public Optional<Person> getOnePerson(@PathVariable Long id) {
 		return pr.findById(id);
+	}
+	
+	@GetMapping("producteur")
+	public Iterable<Producteur> getAllProducteur() {
+		return prodRepo.findAll();
+	}
+	
+	
+	@GetMapping("producteur/{id}/produits")
+	public Iterable<Produit> getProduitProducteur(@PathVariable Long id) {
+		if (prodRepo.findById(id).isPresent()) {
+			Producteur p = prodRepo.findById(id).get();
+			return p.getProduits();
+		}
+		else {
+			return null;
+		}
+		
 	}
 
 	@DeleteMapping("person/{id}")
