@@ -1,20 +1,7 @@
 package fr.solutec;
 
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.util.Arrays;
-import java.util.Optional;
-
-import javax.sql.rowset.serial.SerialBlob;
-
-import org.hibernate.type.SerializableToBlobType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.solutec.entities.Admin;
 import fr.solutec.entities.Adress;
 import fr.solutec.entities.Consommateur;
-import fr.solutec.entities.Image;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
