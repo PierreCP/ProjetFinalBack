@@ -83,7 +83,6 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Creation/Update de la BDD");
 
-
 		
 		Categorie ct1 = new Categorie(null, "Légumes", "Ici c'est la catégorie Légumes");
 		tpRepo.save(ct1);
