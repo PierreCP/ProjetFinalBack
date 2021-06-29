@@ -147,11 +147,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		SousCategorie st24 = new SousCategorie(null, "Fromages", "", ct3);
 		stpRepo.save(st24);
 
-		// x12
-		/*
-		 * addSousTypeToType("Légumes", "Salades"); addSousTypeToType("Bières",
-		 * "Bières blondes");
-		 */
+
 
 		Produit pr1 = new Produit(null, "Patate", "Sac 1Kg de pomme de terre de corse", 45, 3.99F, null, st7);
 		produitRepo.save(pr1);
