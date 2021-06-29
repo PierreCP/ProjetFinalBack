@@ -48,6 +48,11 @@ public class PersonRest {
 		adressRepo.save(a);
 		return pr.save(p);
 	}
+	
+	@GetMapping("person/null")
+	public static Person getNullPerson(){
+		return new Person();
+	}
 
 	@GetMapping("person")
 	public Iterable<Person> getAllPerson() {
