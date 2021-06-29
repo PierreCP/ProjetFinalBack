@@ -1,5 +1,7 @@
 package fr.solutec.rest;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,8 +76,13 @@ public class PersonRest {
 		return prodRepo.findById(id);
 	}
 	
+	@GetMapping("producteur/person/{id}")
+	public Optional<Producteur> getProducteurByIdPerson(@PathVariable Long id) {
+		 return prodRepo.findByPersonId(id);
 
-	@GetMapping("producteur/produits/{id}")
+	}
+	
+	@GetMapping("producteur/produit/{id}")
 	public Iterable<Produit> getProduitProducteur(@PathVariable Long id) {
 		if (prodRepo.findById(id).isPresent()) {
 			Producteur p = prodRepo.findById(id).get();
@@ -84,6 +91,40 @@ public class PersonRest {
 		else {
 			return null;
 		}	
+	}
+	
+	@GetMapping("producteur/produit/{id}/{sousCategorie}")
+	public Iterable<Produit> getSousCategorieProduitsProducteur(@PathVariable Long id, @PathVariable String sousCategorie) {
+		if (prodRepo.findById(id).isPresent()) {
+			Producteur p = prodRepo.findById(id).get();
+			List<Produit> prod = new ArrayList<Produit>();
+			for (Produit produit : p.getProduits()) {
+				if (produit.getSousCategorie().getNom().equals(sousCategorie)) {
+					prod.add(produit);
+				}	
+			}
+			return prod;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	@GetMapping("person/produit/{id}/{sousCategorie}")
+	public Iterable<Produit> getSousCategorieProduitsOfProducteurByIdPerson(@PathVariable Long id, @PathVariable String sousCategorie) {
+		if (prodRepo.findByPersonId(id).isPresent()) {
+			Producteur p = prodRepo.findByPersonId(id).get();
+			List<Produit> prod = new ArrayList<Produit>();
+			for (Produit produit : p.getProduits()) {
+				if (produit.getSousCategorie().getNom().equals(sousCategorie)) {
+					prod.add(produit);
+				}	
+			}
+			return prod;
+		}
+		else {
+			return null;
+		}
 	}
 	
 	@GetMapping("person/type/{id}")
