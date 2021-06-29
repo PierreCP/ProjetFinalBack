@@ -1,8 +1,20 @@
 package fr.solutec;
 
 
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Arrays;
 
+import javax.sql.rowset.serial.SerialBlob;
+
+import org.hibernate.type.SerializableToBlobType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,12 +22,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Admin;
 import fr.solutec.entities.Consommateur;
+import fr.solutec.entities.Image;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.TypeProduit;
 import fr.solutec.repository.AdminRepository;
 import fr.solutec.repository.ConsommateurRepository;
+import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.TypeProduitRepository;
@@ -33,6 +47,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	private ConsommateurRepository consommateurRepo;
 	@Autowired
 	private ProducteurRepository producteurRepo;
+	@Autowired
+	private ImageRepository imageRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
@@ -80,6 +96,38 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		producteurRepo.save(p2);
 		Producteur p3 = new Producteur(null,"Brasserie Terneyre", new Person(null,"TERNEYRE", "Benoit", "ben", "ben123", 84, "14 rue de Java"), Arrays.asList(pr3));
 		producteurRepo.save(p3);
+		
+		/*
+		String mysqlUrl = "jdbc:mysql://localhost/projet-final";
+		Connection con = DriverManager.getConnection(mysqlUrl, "root", "");
+		String query = "INSERT INTO Image(id,titre,commentaire, img) VALUES (?, ?, ?, ?)";
+		PreparedStatement pstmt = con.prepareStatement(query);
+		pstmt.setInt(1, 1159);
+		pstmt.setString(2, "Fromage");
+		pstmt.setString(3, "Mon plus beau gruyère");
+		FileInputStream image = new FileInputStream("C:\\Users\\stagiaire\\Desktop\\fromage.jpg");
+		pstmt.setBlob(4, image);
+		pstmt.execute();
+		
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery("select * from image");
+		int i = 1;
+		while(rs.next()) {
+			System.out.println(rs.getString("titre"));
+			Blob blob = rs.getBlob("img");
+			byte byteArray[] = blob.getBytes(1,(int)blob.length());
+			@SuppressWarnings("resource")
+			FileOutputStream outPutStream = new FileOutputStream("C:\\Users\\stagiaire\\Desktop\\blob_output"+i+".jpg");
+			outPutStream.write(byteArray);
+			System.out.println("C:\\Users\\stagiaire\\Desktop\\blob_output"+i+".jpg");
+			System.out.println();
+			i++;
+		}
+		
+		FileInputStream imgFromage = new FileInputStream("C:\\Users\\stagiaire\\Desktop\\fromage.jpg");
+		Image i1 = new Image(null, "Fromage", "Mon plus beau gruyère", imgFromage);
+		imageRepo.save(i1);
+		*/
 		
 				
 	}
