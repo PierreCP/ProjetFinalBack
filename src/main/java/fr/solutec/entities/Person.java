@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "person_type")
 public class Person {
 	@Id @GeneratedValue
 	private Long id;
