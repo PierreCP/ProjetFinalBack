@@ -1,9 +1,10 @@
 package fr.solutec.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,8 @@ public class Person {
 	private String login;
 	private String mdp;
 	private int age;
-	private String adresse;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	private Adress adresse;
 	
 }
