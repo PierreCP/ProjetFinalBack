@@ -3,6 +3,7 @@ package fr.solutec.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class Image {
 	private Long id;
 	private String titre;
 	private String commentaire;
+	@Lob
 	private byte[] img;
 
 }
