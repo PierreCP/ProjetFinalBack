@@ -88,7 +88,7 @@ public class PersonRest {
 		else {
 			return null;
 		}
-	}
+	} 
 
 	@DeleteMapping("person/{id}")
 	public boolean deletePerson(@PathVariable Long id) {
