@@ -167,7 +167,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		produitRepo.save(pr6);
 		Produit pr7 = new Produit(null, "Champagne ALBERT", "Champagne 1995", 15, 22.52F, null, st19);
 		produitRepo.save(pr7);
-		Produit pr8 = new Produit(null, "Abricot", "", 15, 1.52F, null, st1);
+		Produit pr8 = new Produit(null, "Abricot", "Abricots délicieux", 15, 1.52F, null, st1);
 		produitRepo.save(pr8);
 		Produit pr9 = new Produit(null, "Raisin", "", 15, 1.52F, null, st2);
 		produitRepo.save(pr9);
@@ -207,7 +207,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine")));
 		consommateurRepo.save(c3); 
 
-		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 87, "Rue de France", "06000", "Nice")), Arrays.asList(pr1, pr2, pr7, pr8, pr18));
+		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 87, "Rue de France", "06000", "Nice")), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
 		producteurRepo.save(p1);
 		Producteur p2 = new Producteur(null, "Nos Ancêtres les Gaulois",new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg")),Arrays.asList(pr2, pr4, pr5, pr6));
 		producteurRepo.save(p2);
