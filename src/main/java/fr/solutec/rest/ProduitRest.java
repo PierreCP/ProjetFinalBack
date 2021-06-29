@@ -33,7 +33,7 @@ public class ProduitRest {
 		return produitRepo.findBySousCategorieCategorieNom(categorieType);
 	}
 
-	@GetMapping("produit/sous_ategorie/{categorieSousType}")
+	@GetMapping("produit/sous_categorie/{categorieSousType}")
 	public Iterable<Produit> getAllProduitBySousCategorie(@PathVariable String categorieSousType) {
 		return produitRepo.findBySousCategorieNom(categorieSousType);
 	}
