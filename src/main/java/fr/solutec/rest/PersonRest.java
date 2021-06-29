@@ -49,8 +49,13 @@ public class PersonRest {
 		return prodRepo.findAll();
 	}
 	
+	@GetMapping("producteur/{id}")
+	public Optional<Producteur> getOneProducteur(@PathVariable Long id) {
+		return prodRepo.findById(id);
+	}
 	
-	@GetMapping("producteur/{id}/produits")
+	
+	@GetMapping("producteur/produits/{id}")
 	public Iterable<Produit> getProduitProducteur(@PathVariable Long id) {
 		if (prodRepo.findById(id).isPresent()) {
 			Producteur p = prodRepo.findById(id).get();
@@ -58,8 +63,7 @@ public class PersonRest {
 		}
 		else {
 			return null;
-		}
-		
+		}	
 	}
 
 	@DeleteMapping("person/{id}")
