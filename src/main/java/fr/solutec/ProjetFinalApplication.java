@@ -21,6 +21,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Admin;
+import fr.solutec.entities.Adress;
 import fr.solutec.entities.Consommateur;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Person;
@@ -28,6 +29,7 @@ import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.TypeProduit;
 import fr.solutec.repository.AdminRepository;
+import fr.solutec.repository.AdressRepository;
 import fr.solutec.repository.ConsommateurRepository;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.ProducteurRepository;
@@ -47,6 +49,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	private ConsommateurRepository consommateurRepo;
 	@Autowired
 	private ProducteurRepository producteurRepo;
+	@Autowired
+	private AdressRepository adressRepo;
 	@Autowired
 	private ImageRepository imageRepo;
 	
@@ -80,21 +84,21 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		Produit pr6 = new Produit(null, "Comté", "Comté affiné 18 mois", 8, 8.52F, null, t2);
 		produitRepo.save(pr6);
 		
-		Admin a1 = new Admin(null, new Person(null,"Jean", "Test", "1", "0", 10, "13 rue du test"));
+		Admin a1 = new Admin(null, new Person(null,"Jean", "Test", "1", "0", 10, new Adress(null, 13, "Rue du Test", "75007", "Paris")));
 		adminRepo.save(a1);
 		
-		Consommateur c1 = new Consommateur(null, new Person(null,"ALBERT", "Geoffrey", "geof", "geof123", 23, "27 rue des sports"));
+		Consommateur c1 = new Consommateur(null, new Person(null,"ALBERT", "Geoffrey", "geof", "geof123", 23, new Adress(null, 27, "Rue des Sports", "78150", "Le Chesnay-Rocquencourt")));
 		consommateurRepo.save(c1);
-		Consommateur c2 = new Consommateur(null,new Person(null,"CHARPENTIER", "Pierre", "pier", "pier123", 35, "15 rue du Moulin"));
+		Consommateur c2 = new Consommateur(null,new Person(null,"CHARPENTIER", "Pierre", "pier", "pier123", 35, new Adress(null, 15, "Rue du Moulin", "92800", "Puteaux")));
 		consommateurRepo.save(c2);
-		Consommateur c3 = new Consommateur(null, new Person(null,"MORISSET", "Guillaume", "gui", "gui123", 54, "3 rue du code"));
+		Consommateur c3 = new Consommateur(null, new Person(null,"MORISSET", "Guillaume", "gui", "gui123", 54, new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine")));
 		consommateurRepo.save(c3);
 		
-		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null,"BANKA", "Joel", "jojo", "jojo123", 84, "87 rue de France"), Arrays.asList(pr1));
+		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null,"BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 87, "Rue de France", "06000", "Nice")), Arrays.asList(pr1));
 		producteurRepo.save(p1);
-		Producteur p2 = new Producteur(null,"Nos Ancêtres les Gaulois", new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, "22 rue d'angular"),Arrays.asList(pr2, pr4, pr5, pr6));
+		Producteur p2 = new Producteur(null,"Nos Ancêtres les Gaulois", new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg")),Arrays.asList(pr2, pr4, pr5, pr6));
 		producteurRepo.save(p2);
-		Producteur p3 = new Producteur(null,"Brasserie Terneyre", new Person(null,"TERNEYRE", "Benoit", "ben", "ben123", 84, "14 rue de Java"), Arrays.asList(pr3));
+		Producteur p3 = new Producteur(null,"Brasserie Terneyre", new Person(null,"TERNEYRE", "Benoit", "ben", "ben123", 84, new Adress(null, 14, "Rue de Java", "45000", "Orléans")), Arrays.asList(pr3));
 		producteurRepo.save(p3);
 		
 		/*

@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.solutec.entities.Adress;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
 import fr.solutec.repository.AdminRepository;
+import fr.solutec.repository.AdressRepository;
 import fr.solutec.repository.ConsommateurRepository;
 import fr.solutec.repository.PersonRepository;
 import fr.solutec.repository.ProducteurRepository;
@@ -36,9 +38,14 @@ public class PersonRest {
 	
 	@Autowired
 	private ProducteurRepository prodRepo;
+	
+	@Autowired
+	private AdressRepository adressRepo;
 
 	@PostMapping("person")
 	public Person savePerson(@RequestBody Person p) {
+		Adress a = p.getAdresse();
+		adressRepo.save(a);
 		return pr.save(p);
 	}
 

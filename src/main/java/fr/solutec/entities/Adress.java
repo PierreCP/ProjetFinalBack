@@ -22,13 +22,13 @@ public class Adress {
 	private Long id;
 	private int numéroRue;
 	private String nomRue;
-	private int codePostal;
+	private String codePostal;
 	private String nomCommune;
 	private double x;
 	private double y;
 	
 	
-	public Adress(Long id, int numéroRue, String nomRue, int codePostal, String nomCommune) {
+	public Adress(Long id, int numéroRue, String nomRue, String codePostal, String nomCommune) {
 		super();
 		this.id = id;
 		this.numéroRue = numéroRue;
