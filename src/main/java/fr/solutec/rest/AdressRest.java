@@ -16,10 +16,9 @@ public class AdressRest {
 	@Autowired
 	private AdressRepository adRepo;
 	
-	/*
-	@GetMapping("coordinates")
-	public static List<double> getCoordinatesById(){
-		List
-		return 
-	}*/
+	
+	@GetMapping("nullAdress")
+	public static Adress getNullAdress(){
+		return new Adress(); 
+	}
 }
