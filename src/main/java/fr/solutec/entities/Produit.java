@@ -21,7 +21,8 @@ public class Produit {
 	private String saison;
 	
 	@ManyToOne
-	private TypeProduit type;
+	private SousCategorie sousCategorie;
+	
 	
 
 }

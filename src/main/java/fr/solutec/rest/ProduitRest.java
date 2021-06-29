@@ -30,13 +30,13 @@ public class ProduitRest {
 	
 	@GetMapping("produit/categorie/{categorieType}")
 	public Iterable<Produit> getAllProduitByCategorie(@PathVariable String categorieType) {
-		return produitRepo.findByTypeCategorie(categorieType);
+		return produitRepo.findBySousCategorieCategorieNom(categorieType);
 	}
 
-	/*@GetMapping("produit/sousCategorie/{categorieSousType}")
-	public List<Produit> getAllProduitBySousCategorie(@PathVariable String categorieSousType) {
-		return produitRepo.getProduitBySousType(categorieSousType);
+	@GetMapping("produit/sous_ategorie/{categorieSousType}")
+	public Iterable<Produit> getAllProduitBySousCategorie(@PathVariable String categorieSousType) {
+		return produitRepo.findBySousCategorieNom(categorieSousType);
 	}
-	*/
+	
 
 }
