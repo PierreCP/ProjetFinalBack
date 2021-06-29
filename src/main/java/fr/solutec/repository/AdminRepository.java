@@ -4,8 +4,9 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
+import fr.solutec.entities.Admin;
 import fr.solutec.entities.Person;
 
-public interface PersonRepo extends CrudRepository<Person, Long>{
-	public Optional<Person> findByLoginAndMdp(String login, String mdp);
+public interface AdminRepository extends CrudRepository<Admin, Long>{
+	public Optional<Admin> findByPersonId(Long id);
 }

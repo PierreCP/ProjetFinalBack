@@ -1,22 +1,22 @@
 package fr.solutec.entities;
 
-import javax.persistence.CascadeType;
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor @AllArgsConstructor @Data
-public class Admin {
+@AllArgsConstructor @NoArgsConstructor @Data
+public class Image {
 	@Id @GeneratedValue
 	private Long id;
-	
-	@OneToOne(cascade = {CascadeType.ALL})
-	private Person person;
-	
+	private String titre;
+	private String commentaire;
+	private Blob img;
+
 }

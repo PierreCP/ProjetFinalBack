@@ -1,9 +1,9 @@
 package fr.solutec.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -11,12 +11,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor @AllArgsConstructor @Data
-public class Admin {
+@AllArgsConstructor @NoArgsConstructor @Data
+public class SousTypeProduit {
 	@Id @GeneratedValue
 	private Long id;
-	
-	@OneToOne(cascade = {CascadeType.ALL})
-	private Person person;
-	
+	private String sousCategorie;
+	private String description;
+
 }

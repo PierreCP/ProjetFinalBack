@@ -1,11 +1,8 @@
 package fr.solutec.entities;
 
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 
 
 import lombok.AllArgsConstructor;
@@ -14,9 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "person_type")
-public abstract class Person {
+public class Person {
 	@Id @GeneratedValue
 	private Long id;
 	private String nom;
@@ -26,5 +21,4 @@ public abstract class Person {
 	private int age;
 	private String adresse;
 	
-
 }

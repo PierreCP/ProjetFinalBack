@@ -21,6 +21,7 @@ public class Produit {
 	private String saison;
 	
 	@ManyToOne
-	private TypeProduit typeProduit;
+	private TypeProduit type;
+	
 
 }
