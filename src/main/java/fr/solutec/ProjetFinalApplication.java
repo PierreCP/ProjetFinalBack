@@ -149,7 +149,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		Consommateur c3 = new Consommateur(null,
 				new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
 						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine")));
-		consommateurRepo.save(c3);
+		consommateurRepo.save(c3); 
 
 		Producteur p1 = new Producteur(null, "Chez Jojo",
 				new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, 
