@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,11 @@ public class ProduitRest {
 	public Iterable<Produit> getAllProduitByCategorie(@PathVariable String categorieType) {
 		return produitRepo.findByTypeCategorie(categorieType);
 	}
+
+	/*@GetMapping("produit/sousCategorie/{categorieSousType}")
+	public List<Produit> getAllProduitBySousCategorie(@PathVariable String categorieSousType) {
+		return produitRepo.getProduitBySousType(categorieSousType);
+	}
+	*/
 
 }

@@ -22,5 +22,6 @@ public class Produit {
 	
 	@ManyToOne
 	private TypeProduit type;
+	
 
 }

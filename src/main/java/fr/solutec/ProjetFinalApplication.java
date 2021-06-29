@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.Optional;
 
 import javax.sql.rowset.serial.SerialBlob;
 
@@ -26,12 +27,14 @@ import fr.solutec.entities.Image;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
+import fr.solutec.entities.SousTypeProduit;
 import fr.solutec.entities.TypeProduit;
 import fr.solutec.repository.AdminRepository;
 import fr.solutec.repository.ConsommateurRepository;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
+import fr.solutec.repository.SousTypeProduitRepository;
 import fr.solutec.repository.TypeProduitRepository;
 
 @SpringBootApplication
@@ -41,6 +44,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	private ProduitRepository produitRepo;
 	@Autowired
 	private TypeProduitRepository tpRepo;
+	@Autowired
+	private SousTypeProduitRepository stpRepo;
 	@Autowired
 	private AdminRepository adminRepo;
 	@Autowired
@@ -55,17 +60,59 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		System.out.println("Lancement terminé");
 		
 	}
-
+	
+	public void addSousTypeToType(String typeName, String sousTypeName) {
+		Optional<TypeProduit> type = tpRepo.getByName(typeName);
+		Optional<SousTypeProduit> sousType = stpRepo.getByName(sousTypeName);
+		if (type.isPresent() && sousType.isPresent()) {
+			TypeProduit type1 = type.get();
+			SousTypeProduit sousType1 = sousType.get();
+			
+			type1.getSousCategorie().add(sousType1);
+			//  type.get().getSousCategorie().add(sousType.get());
+			tpRepo.save(type.get());
+		}
+		else {
+			System.out.println("Ca n'a pas marché");
+		}
+		
+	}
+	
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Creation/Update de la BDD");
 		
-		TypeProduit t1 = new TypeProduit(null, "Légumes", "Ici c'est la catégorie légumes");
+		
+		TypeProduit t1 = new TypeProduit(null, "Légumes", "Ici c'est la catégorie Légumes", null);
 		tpRepo.save(t1);
-		TypeProduit t2 = new TypeProduit(null, "Fromage", "Ici c'est la catégorie fromages");
+		TypeProduit t2 = new TypeProduit(null, "Fromages", "Ici c'est la catégorie Fromages", null);
 		tpRepo.save(t2);
-		TypeProduit t3 = new TypeProduit(null, "Alcool", "Ici c'est la catégorie alcool");
+		TypeProduit t3 = new TypeProduit(null, "Bières", "Ici c'est la catégorie Bières", null);
 		tpRepo.save(t3);
+		TypeProduit t4 = new TypeProduit(null, "Vins", "Ici c'est la catégorie Vins", null);
+		tpRepo.save(t4);
+		TypeProduit t5 = new TypeProduit(null, "Fruits", "Ici c'est la catégorie Fruits", null);
+		tpRepo.save(t5);
+		TypeProduit t6 = new TypeProduit(null, "Autres", "Ici c'est la catégorie Autres", null);
+		tpRepo.save(t6);
+		
+		SousTypeProduit st1 = new SousTypeProduit(null, "Légumes racines, tubercules et tiges", "Ici c'est la catégorie Légumes racines, tubercules et tiges");
+		stpRepo.save(st1);
+		SousTypeProduit st2 = new SousTypeProduit(null, "Bières blondes", "Ici c'est la catégorie Bières blondes");
+		stpRepo.save(st2);
+		SousTypeProduit st3 = new SousTypeProduit(null, "Champagnes", "Ici c'est la catégorie Champagnes");
+		stpRepo.save(st3);
+		SousTypeProduit st4 = new SousTypeProduit(null, "Baies", "Ici c'est la catégorie Baies");
+		stpRepo.save(st4);
+		SousTypeProduit st5 = new SousTypeProduit(null, "Bières rousses", "Ici c'est la catégorie Bières rousses");
+		stpRepo.save(st5);
+		SousTypeProduit st6 = new SousTypeProduit(null, "Champignons", "Ici c'est la catégorie Champignons");
+		stpRepo.save(st6);
+		SousTypeProduit st7 = new SousTypeProduit(null, "Salades", "Ici c'est la catégorie Salades");
+		stpRepo.save(st7);
+		
+		addSousTypeToType("Légumes", "Salades");
+		addSousTypeToType("Bières", "Bières blondes");
 		
 		Produit pr1 = new Produit(null, "Patate", "Sac 1Kg de pomme de terre de corse", 45, 3.99F, null, t1);
 		produitRepo.save(pr1);
@@ -79,6 +126,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		produitRepo.save(pr5);
 		Produit pr6 = new Produit(null, "Comté", "Comté affiné 18 mois", 8, 8.52F, null, t2);
 		produitRepo.save(pr6);
+		Produit pr7 = new Produit(null, "Champagne ALBERT", "Champagne 1995", 15, 22.52F, null, t4);
+		produitRepo.save(pr7);
 		
 		Admin a1 = new Admin(null, new Person(null,"Jean", "Test", "1", "0", 10, "13 rue du test"));
 		adminRepo.save(a1);
@@ -96,6 +145,15 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		producteurRepo.save(p2);
 		Producteur p3 = new Producteur(null,"Brasserie Terneyre", new Person(null,"TERNEYRE", "Benoit", "ben", "ben123", 84, "14 rue de Java"), Arrays.asList(pr3));
 		producteurRepo.save(p3);
+		
+		Optional<TypeProduit> ty = tpRepo.getByName("Légumes");
+		if (ty.isPresent()) {
+			System.out.println("Le type récupéré est : " + ty.get().getCategorie());
+		}
+		else {
+			System.out.println("Aucun type produit à ce nom");
+		}
+		
 		
 		/*
 		String mysqlUrl = "jdbc:mysql://localhost/projet-final";
