@@ -83,13 +83,9 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Creation/Update de la BDD");
 
-<<<<<<< HEAD
+
 
 		Categorie ct1 = new Categorie(null, "Fruits", "Ici c'est la catégorie Fruits");
-=======
-		
-		Categorie ct1 = new Categorie(null, "Légumes", "Ici c'est la catégorie Légumes");
->>>>>>> branch 'master' of https://github.com/PierreCP/ProjetFinalBack.git
 		tpRepo.save(ct1);
 		Categorie ct2 = new Categorie(null, "Légumes", "Ici c'est la catégorie Légumes");
 		tpRepo.save(ct2);
@@ -211,25 +207,13 @@ public class ProjetFinalApplication implements CommandLineRunner {
 						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine")));
 		consommateurRepo.save(c3); 
 
-		Producteur p1 = new Producteur(null, "Chez Jojo",
-<<<<<<< HEAD
-				new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, "87 rue de France"), Arrays.asList(pr1, pr2, pr7, pr8, pr18));
-=======
-				new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, 
-						new Adress(null, 87, "Rue de France", "06000", "Nice")), Arrays.asList(pr1));
->>>>>>> branch 'master' of https://github.com/PierreCP/ProjetFinalBack.git
+		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 87, "Rue de France", "06000", "Nice")), Arrays.asList(pr1, pr2, pr7, pr8, pr18));
 		producteurRepo.save(p1);
-		Producteur p2 = new Producteur(null, "Nos Ancêtres les Gaulois",
-				new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, 
-						new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg")),Arrays.asList(pr2, pr4, pr5, pr6));
+		Producteur p2 = new Producteur(null, "Nos Ancêtres les Gaulois",new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg")),Arrays.asList(pr2, pr4, pr5, pr6));
 		producteurRepo.save(p2);
-		Producteur p3 = new Producteur(null, "Brasserie Terneyre",
-<<<<<<< HEAD
-				new Person(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, "14 rue de Java"), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
-=======
-				new Person(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, 
-						new Adress(null, 14, "Rue de Java", "45000", "Orléans")), Arrays.asList(pr3));
->>>>>>> branch 'master' of https://github.com/PierreCP/ProjetFinalBack.git
+		Producteur p3 = new Producteur(null, "Brasserie Terneyre", new Person(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, 
+						new Adress(null, 14, "Rue de Java", "45000", "Orléans")), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
+
 		producteurRepo.save(p3);
 
 		/*
