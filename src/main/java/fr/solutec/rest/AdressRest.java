@@ -4,6 +4,7 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,12 @@ public class AdressRest {
 	
 	
 	@GetMapping("nullAdress")
-	public static Adress getNullAdress(){
+	public Adress getNullAdress(){
 		return new Adress(); 
+	}
+	
+	@PostMapping("newAdress")
+	public Adress newAdress(@RequestBody Adress a) {
+		return adRepo.save(a);
 	}
 }
