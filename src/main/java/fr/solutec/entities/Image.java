@@ -1,7 +1,5 @@
 package fr.solutec.entities;
 
-import java.sql.Blob;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +15,6 @@ public class Image {
 	private Long id;
 	private String titre;
 	private String commentaire;
-	private Blob img;
+	private byte[] img;
 
 }
