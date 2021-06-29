@@ -1,10 +1,17 @@
 package fr.solutec.repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import fr.solutec.entities.Produit;
 
 public interface ProduitRepository extends CrudRepository<Produit, Long>{
-	public Iterable<Produit> findByTypeCategorie(String categorie);
+	public Iterable<Produit> findBySousCategorieCategorieNom(String categorie);
+	public Iterable<Produit> findBySousCategorieNom(String categorie);
+	
+	//@Query(value = "SELECT p FROM Produit p INNER JOIN Categorie t ON p.id=t.id INNER JOIN SousCategorie st ON p.id=st.id WHERE st.sousCategorie=?1")
+	//public List<Produit> getProduitBySousType(String sousCategorie);
 	
 }

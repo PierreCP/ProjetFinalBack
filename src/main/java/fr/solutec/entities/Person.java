@@ -19,6 +19,6 @@ public class Person {
 	private String login;
 	private String mdp;
 	private int age;
-	private String adresse;
+	private Adress adresse;
 	
 }
