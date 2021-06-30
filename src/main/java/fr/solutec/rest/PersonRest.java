@@ -25,6 +25,7 @@ import fr.solutec.repository.AdressRepository;
 import fr.solutec.repository.ConsommateurRepository;
 import fr.solutec.repository.PersonRepository;
 import fr.solutec.repository.ProducteurRepository;
+import fr.solutec.repository.ProduitRepository;
 
 
 
@@ -45,6 +46,9 @@ public class PersonRest {
 	
 	@Autowired
 	private AdressRepository adressRepo;
+	
+	@Autowired
+	private ProduitRepository produitRepo;
 
 	@PostMapping("person")
 	public Person savePerson(@RequestBody Person p) {
@@ -122,6 +126,38 @@ public class PersonRest {
 		else {
 			return null;
 		}
+	}
+	
+	@PutMapping("person/{id}/produit/{id_prod}/{quantite}")
+	public Producteur addProduitProducteurByIdPersonAndIdProduit(@PathVariable Long id, @PathVariable Long id_prod, @PathVariable int quantite) {
+		Optional<Produit> newProd =produitRepo.findById(id_prod);
+		int avant = newProd.get().getQuantite();
+		newProd.get().setQuantite(avant+quantite);
+		if (prodRepo.findByPersonId(id).isPresent()) {
+			Producteur p = prodRepo.findByPersonId(id).get();
+			List<Produit> prod = p.getProduits();
+			prod.add(newProd.get());
+			p.setProduits(prod);
+			return prodRepo.save(p);
+		} else {
+			return null;
+		} 
+	}
+	
+	@PutMapping("person/produit/{id}/{nom}/{quantite}")
+	public Producteur addProduitProducteurByIdPersonAndNameProduit(@PathVariable Long id, @PathVariable String nom, @PathVariable int quantite) {
+		Produit newProd =produitRepo.findByNom(nom);
+		int avant = newProd.getQuantite();
+		newProd.setQuantite(avant+quantite);
+		if (prodRepo.findByPersonId(id).isPresent()) {
+			Producteur p = prodRepo.findByPersonId(id).get();
+			List<Produit> prod = p.getProduits();
+			prod.add(newProd);
+			p.setProduits(prod);
+			return prodRepo.save(p);
+		} else {
+			return null;
+		} 
 	}
 	
 	
