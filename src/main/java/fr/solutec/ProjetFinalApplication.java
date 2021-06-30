@@ -63,7 +63,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	private ImageRepository imageRepo;
 	@Autowired
 	private MessageRepository messageRepo;
-	
+	@Autowired
 	private panierRepository panierRepo;
 
 	public static void main(String[] args) {
@@ -210,7 +210,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		consommateurRepo.save(c2);
 		Consommateur c3 = new Consommateur(null,
 				new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
-						new Adress(null, 4, "rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
+						new Adress(null, 4, "Rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
 		consommateurRepo.save(c3); 
 
 		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 1, "Esplanade du cardo", "44700", "Orvault", 353536.49, 6694653.56)), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
@@ -231,9 +231,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		Message m3 = new Message(null,"Troisième Message", p1.getPerson(), c1.getPerson());
 		messageRepo.save(m3);
 
-		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), new Consommateur(null, new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
-						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine"))));
-		panierRepo.save(pa1);
+		
 
 		/*
 		 * String mysqlUrl = "jdbc:mysql://localhost/projet-final"; Connection con =

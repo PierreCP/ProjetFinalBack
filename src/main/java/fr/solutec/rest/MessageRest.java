@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Message;
+import fr.solutec.entities.Person;
 import fr.solutec.repository.MessageRepository;
+import fr.solutec.repository.PersonRepository;
 
 @RestController @CrossOrigin("*")
 public class MessageRest {
@@ -20,10 +22,20 @@ public class MessageRest {
 	 @Autowired
 	 private MessageRepository mRepo;
 	 
+	 @Autowired
+	 private PersonRepository pRepo;
+	 
 	  
 	 @PostMapping("newMessage")
 	 public Message newMessage(@RequestBody Message m) {
-		 return mRepo.save(m);
+		 Long e = m.getEmetteur().getId();
+		 Long r = m.getReceveur().getId();
+		 if (pRepo.findById(e).isPresent() && pRepo.findById(r).isPresent()) {
+			 return mRepo.save(m);
+		 }
+		 else {
+			 return null;
+		 }
 	 }
 	 
 	 @GetMapping("getMessage/{id}")
