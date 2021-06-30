@@ -140,12 +140,14 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		stpRepo.save(st20);
 		SousCategorie st21 = new SousCategorie(null, "Bières blondes", "Ici c'est la catégorie bières blondes", ct5);
 		stpRepo.save(st21);
-		SousCategorie st22 = new SousCategorie(null, "Bières ambrées ou rousse", "Ici c'est la catégorie bières ambrées ou rousse", ct5);
+		SousCategorie st22 = new SousCategorie(null, "Bières ambrées ou rousses", "Ici c'est la catégorie bières ambrées ou rousse", ct5);
 		stpRepo.save(st22);
 		SousCategorie st23 = new SousCategorie(null, "Bières brunes", "Ici c'est la catégorie bières brunes", ct5);
 		stpRepo.save(st23);
 		SousCategorie st24 = new SousCategorie(null, "Fromages", "", ct3);
 		stpRepo.save(st24);
+		SousCategorie st25 = new SousCategorie(null, "Autres", "", ct6);
+		stpRepo.save(st25);
 
 
 
