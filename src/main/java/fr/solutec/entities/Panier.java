@@ -2,7 +2,6 @@ package fr.solutec.entities;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,7 +23,7 @@ public class Panier {
 	@ManyToMany
 	public List<Produit> produits;
 	
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne
 	private Consommateur consommateur;
 
 }

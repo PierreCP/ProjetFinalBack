@@ -1,20 +1,7 @@
 package fr.solutec;
 
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.util.Arrays;
-import java.util.Optional;
-
-import javax.sql.rowset.serial.SerialBlob;
-
-import org.hibernate.type.SerializableToBlobType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.solutec.entities.Admin;
 import fr.solutec.entities.Adress;
 import fr.solutec.entities.Consommateur;
-import fr.solutec.entities.Image;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Panier;
 import fr.solutec.entities.Person;
@@ -220,8 +206,6 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		Producteur p3 = new Producteur(null, "Brasserie Terneyre", new Person(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, 
 
 						new Adress(null, 14, "Rue de Java", "45000", "Orléans", 4646,4512)), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
-
-
 		producteurRepo.save(p3);
 		
 		Message m1 = new Message(null,"Premier Message", a1.getPerson(), c1.getPerson());
@@ -232,6 +216,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		messageRepo.save(m3);
 
 		
+		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), c3);
+		panierRepo.save(pa1);
 
 		/*
 		 * String mysqlUrl = "jdbc:mysql://localhost/projet-final"; Connection con =
