@@ -142,9 +142,9 @@ public class PersonRest {
 		}
 	}
 
-	@PutMapping("person/{id}/produit/{nom}/{quantite}")
+	@GetMapping("person/{id}/produit/{nom}/{quantite}/{prix}/{description}")
 	public Producteur addProduitProducteur(@PathVariable Long id, @PathVariable String nom,
-			@PathVariable int quantite) {
+			@PathVariable int quantite, @PathVariable float prix, @PathVariable String description) {
 		if (prodRepo.findByPersonId(id).isPresent()) {
 			Producteur p = prodRepo.findByPersonId(id).get();
 			List<Produit> prod = new ArrayList<Produit>();
@@ -153,6 +153,8 @@ public class PersonRest {
 			}
 			Produit newProd=produitRepo.findByNom(nom);
 			newProd.setQuantite(quantite);
+			newProd.setDescription(description);
+			newProd.setPrix(prix);
 			prod.add(newProd);
 			p.setProduits(prod);
 			return prodRepo.save(p);
@@ -160,10 +162,9 @@ public class PersonRest {
 			return null;
 		}
 	}
-
-	@PutMapping("person/produit/{id}/{nom}/{quantite}")
-	public Producteur ModifyProduitProducteur(@PathVariable Long id, @PathVariable String nom,
-			@PathVariable int quantite) {
+	
+	@DeleteMapping("produit/person/{id}/{nom}")
+	public Producteur deleteProduitProducteur(@PathVariable Long id, @PathVariable String nom) {
 		if (prodRepo.findByPersonId(id).isPresent()) {
 			Producteur p = prodRepo.findByPersonId(id).get();
 			List<Produit> prod = new ArrayList<Produit>();
@@ -172,7 +173,30 @@ public class PersonRest {
 			}
 			for (Produit produit : prod) {
 				if (produit.getNom().equals(produitRepo.findByNom(nom).getNom())) {
-					produit.setQuantite(produit.getQuantite() + quantite);
+					prod.remove(produit);
+					return prodRepo.save(p);
+				}
+			}
+			return prodRepo.save(p);
+		} else {
+			return null;
+		}
+	}
+
+	@GetMapping("person/produit/{id}/{nom}/{quantite}/{prix}/{description}")
+	public Producteur modifyProduitProducteur(@PathVariable Long id, @PathVariable String nom,
+			@PathVariable int quantite, @PathVariable float prix, @PathVariable String description) {
+		if (prodRepo.findByPersonId(id).isPresent()) {
+			Producteur p = prodRepo.findByPersonId(id).get();
+			List<Produit> prod = new ArrayList<Produit>();
+			for (Produit produit : p.getProduits()) {
+				prod.add(produit);
+			}
+			for (Produit produit : prod) {
+				if (produit.getNom().equals(produitRepo.findByNom(nom).getNom())) {
+					produit.setQuantite(quantite);
+					produit.setPrix(prix);
+					produit.setDescription(description);
 					return prodRepo.save(p);
 				} 
 			}
