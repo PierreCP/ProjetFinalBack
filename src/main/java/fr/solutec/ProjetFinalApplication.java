@@ -25,6 +25,7 @@ import fr.solutec.entities.Adress;
 import fr.solutec.entities.Consommateur;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Message;
+import fr.solutec.entities.Panier;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
@@ -38,6 +39,7 @@ import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SousCategorieRepository;
+import fr.solutec.repository.panierRepository;
 import fr.solutec.repository.CategorieRepository;
 
 @SpringBootApplication
@@ -61,6 +63,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	private ImageRepository imageRepo;
 	@Autowired
 	private MessageRepository messageRepo;
+	
+	private panierRepository panierRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
@@ -144,12 +148,14 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		stpRepo.save(st20);
 		SousCategorie st21 = new SousCategorie(null, "Bières blondes", "Ici c'est la catégorie bières blondes", ct5);
 		stpRepo.save(st21);
-		SousCategorie st22 = new SousCategorie(null, "Bières ambrées ou rousse", "Ici c'est la catégorie bières ambrées ou rousse", ct5);
+		SousCategorie st22 = new SousCategorie(null, "Bières ambrées ou rousses", "Ici c'est la catégorie bières ambrées ou rousse", ct5);
 		stpRepo.save(st22);
 		SousCategorie st23 = new SousCategorie(null, "Bières brunes", "Ici c'est la catégorie bières brunes", ct5);
 		stpRepo.save(st23);
 		SousCategorie st24 = new SousCategorie(null, "Fromages", "", ct3);
 		stpRepo.save(st24);
+		SousCategorie st25 = new SousCategorie(null, "Autres", "", ct6);
+		stpRepo.save(st25);
 
 
 
@@ -191,28 +197,31 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		produitRepo.save(pr18);
 
 		Admin a1 = new Admin(null, new Person(null, "Jean", "Test", "1", "0", 10, 
-				new Adress(null, 13, "Rue du Test", "75007", "Paris")));
+				new Adress(null, 13, "Rue du Test", "75007", "Paris", 132, 1542)));
 		adminRepo.save(a1);
 
 		Consommateur c1 = new Consommateur(null,
 				new Person(null, "ALBERT", "Geoffrey", "geof", "geof123", 23, 
-						new Adress(null, 27, "Rue des Sports", "78150", "Le Chesnay-Rocquencourt")));
+						new Adress(null, 27, "Rue des Sports", "78150", "Le Chesnay-Rocquencourt",1515, 1515)));
 		consommateurRepo.save(c1);
 		Consommateur c2 = new Consommateur(null,
 				new Person(null, "CHARPENTIER", "Pierre", "pier", "pier123", 35, 
-						new Adress(null, 15, "Rue du Moulin", "92800", "Puteaux")));
+						new Adress(null, 1, "Esplanade du cardo", "44700", "Orvault", 353536.49, 6694653.56)));
 		consommateurRepo.save(c2);
 		Consommateur c3 = new Consommateur(null,
 				new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
-						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine")));
+						new Adress(null, 4, "rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
 		consommateurRepo.save(c3); 
 
-		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 87, "Rue de France", "06000", "Nice")), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
+		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 1, "Esplanade du cardo", "44700", "Orvault", 353536.49, 6694653.56)), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
 		producteurRepo.save(p1);
-		Producteur p2 = new Producteur(null, "Nos Ancêtres les Gaulois",new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg")),Arrays.asList(pr2, pr4, pr5, pr6));
+		Producteur p2 = new Producteur(null, "Nos Ancêtres les Gaulois",new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg",416, 1615)),Arrays.asList(pr2, pr4, pr5, pr6));
 		producteurRepo.save(p2);
 		Producteur p3 = new Producteur(null, "Brasserie Terneyre", new Person(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, 
-						new Adress(null, 14, "Rue de Java", "45000", "Orléans")), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
+
+						new Adress(null, 14, "Rue de Java", "45000", "Orléans", 4646,4512)), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
+
+
 		producteurRepo.save(p3);
 		
 		Message m1 = new Message(null,"Premier Message", a1.getPerson(), c1.getPerson());
@@ -221,6 +230,10 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		messageRepo.save(m2);
 		Message m3 = new Message(null,"Troisième Message", p1.getPerson(), c1.getPerson());
 		messageRepo.save(m3);
+
+		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), new Consommateur(null, new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
+						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine"))));
+		panierRepo.save(pa1);
 
 		/*
 		 * String mysqlUrl = "jdbc:mysql://localhost/projet-final"; Connection con =

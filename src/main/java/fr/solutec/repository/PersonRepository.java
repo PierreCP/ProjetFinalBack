@@ -8,4 +8,5 @@ import fr.solutec.entities.Person;
 
 public interface PersonRepository extends CrudRepository<Person, Long>{
 	public Optional<Person> findByLoginAndMdp(String login, String mdp);
-	}
+
+}
