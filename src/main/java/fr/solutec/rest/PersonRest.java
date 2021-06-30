@@ -88,7 +88,7 @@ public class PersonRest {
 	public Iterable<Producteur> getAllProducteur() {
 		return prodRepo.findAll();
 	}
-<<<<<<< HEAD
+
 	
 	@GetMapping("producteurWithDist/{idperson}")
 	public Iterable<Producteur> getAllProducteurWithDist(@PathVariable Long idperson) {
@@ -106,9 +106,7 @@ public class PersonRest {
 		return listProd;
 	}
 	
-=======
 
->>>>>>> branch 'master' of https://github.com/PierreCP/ProjetFinalBack
 	@GetMapping("producteur/{id}")
 	public Optional<Producteur> getOneProducteur(@PathVariable Long id) {
 		return prodRepo.findById(id);
