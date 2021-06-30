@@ -11,18 +11,14 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data
-public class Produit {
+public class Message {
 	@Id @GeneratedValue
 	private Long id;
-	private String nom;
-	private String description;
-	private int quantite;
-	private float prix;
-	private String saison;
+	private String contenu;
 	
 	@ManyToOne
-	private SousCategorie sousCategorie;
+	private Person emetteur;
 	
-	
-
+	@ManyToOne
+	private Person receveur;
 }
