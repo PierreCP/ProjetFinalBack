@@ -89,6 +89,24 @@ public class PersonRest {
 		return prodRepo.findAll();
 	}
 
+	
+	@GetMapping("producteurWithDist/{idperson}")
+	public Iterable<Producteur> getAllProducteurWithDist(@PathVariable Long idperson) {
+		Iterable<Producteur> listProd = prodRepo.findAll();
+		double x1 = pr.findById(idperson).get().getAdresse().getX();
+		double y1 = pr.findById(idperson).get().getAdresse().getY();
+		double x2;
+		double y2;
+		
+		for (Producteur producteur : listProd) {
+			x2 = producteur.getPerson().getAdresse().getX();
+			y2 = producteur.getPerson().getAdresse().getY();
+			producteur.setDistance(Double.valueOf(Math.round( Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2))/10))/100 );			
+			}
+		return listProd;
+	}
+	
+
 	@GetMapping("producteur/{id}")
 	public Optional<Producteur> getOneProducteur(@PathVariable Long id) {
 		return prodRepo.findById(id);
