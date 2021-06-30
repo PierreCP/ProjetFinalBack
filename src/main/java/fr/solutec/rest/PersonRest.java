@@ -109,6 +109,22 @@ public class PersonRest {
 		}	
 	}
 	
+	@GetMapping("person/produit/{id}")
+	public Iterable<Produit> getAllProduitProducteurByIdPerson(@PathVariable Long id) {
+		if (prodRepo.findByPersonId(id).isPresent()) {
+			Producteur p = prodRepo.findByPersonId(id).get();
+			List<Produit> prod = new ArrayList<Produit>();
+			for (Produit produit : p.getProduits()) {
+				 	prod.add(produit);
+				}	
+			return prod;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	
 	@GetMapping("producteur/produit/{id}/{sousCategorie}")
 	public Iterable<Produit> getSousCategorieProduitsProducteur(@PathVariable Long id, @PathVariable String sousCategorie) {
 		if (prodRepo.findById(id).isPresent()) {
