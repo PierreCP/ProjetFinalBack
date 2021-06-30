@@ -1,5 +1,7 @@
 package fr.solutec.rest;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,18 +20,18 @@ public class ImageRest {
 	private ImageRepository ir;
 	
 	@GetMapping("image/{id}")
-	public byte[] getBlob(@PathVariable Long id) {
-		if (ir.findById(id).isPresent()) {
-			Image im = ir.findById(id).get();
-			return im.getImg();
-		}
-		else {
-			return null;
-		}
+	public Optional<Image> getImage(@PathVariable Long id) {
+			return ir.findById(id);
+	}
+	
+	@GetMapping("image")
+	public Iterable<Image> getAllImage() {
+		return ir.findAll();
 	}
 	
 	@PostMapping("upload")
 	public Image upload(@RequestBody Image i) {
 		return ir.save(i);
 	}
+	
 }
