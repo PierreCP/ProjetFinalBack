@@ -16,7 +16,7 @@ public class Produit {
 	private Long id;
 	private String nom;
 	private String description;
-	private int quantité;
+	private int quantite;
 	private float prix;
 	private String saison;
 	

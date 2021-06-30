@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Adress;
+import fr.solutec.entities.Consommateur;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
@@ -49,6 +51,25 @@ public class PersonRest {
 		Adress a = p.getAdresse();
 		adressRepo.save(a);
 		return pr.save(p);
+	}
+	
+	@PostMapping("consommateur")
+	public Consommateur saveConsommateur(@RequestBody Consommateur c) {
+		Person p = c.getPerson();
+		pr.save(p);
+		return consRepo.save(c);
+	}
+	
+	@PostMapping("producteur")
+	public Producteur saveProducteur(@RequestBody Producteur p) {
+		Person u = p.getPerson();
+		pr.save(u);
+		return prodRepo.save(p);
+	}
+	
+	@GetMapping("person/null")
+	public static Person getNullPerson(){
+		return new Person();
 	}
 
 	@GetMapping("person")
@@ -87,6 +108,22 @@ public class PersonRest {
 			return null;
 		}	
 	}
+	
+	@GetMapping("person/produit/{id}")
+	public Iterable<Produit> getAllProduitProducteurByIdPerson(@PathVariable Long id) {
+		if (prodRepo.findByPersonId(id).isPresent()) {
+			Producteur p = prodRepo.findByPersonId(id).get();
+			List<Produit> prod = new ArrayList<Produit>();
+			for (Produit produit : p.getProduits()) {
+				 	prod.add(produit);
+				}	
+			return prod;
+		}
+		else {
+			return null;
+		}
+	}
+	
 	
 	@GetMapping("producteur/produit/{id}/{sousCategorie}")
 	public Iterable<Produit> getSousCategorieProduitsProducteur(@PathVariable Long id, @PathVariable String sousCategorie) {
