@@ -218,8 +218,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 
 		producteurRepo.save(p3);
 		
-		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), new Consommateur(null, new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
-						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine"))));
+		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), c3);
 		panierRepo.save(pa1);
 
 		/*
