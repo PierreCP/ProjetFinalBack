@@ -100,8 +100,8 @@ public class PersonRest {
 		
 		for (Producteur producteur : listProd) {
 			x2 = producteur.getPerson().getAdresse().getX();
-			y2 = producteur.getPerson().getAdresse().getX();
-			producteur.setDistance(Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2)));			
+			y2 = producteur.getPerson().getAdresse().getY();
+			producteur.setDistance(Double.valueOf(Math.round( Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2))/10))/100 );			
 			}
 		return listProd;
 	}

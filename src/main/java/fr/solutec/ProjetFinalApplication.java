@@ -198,14 +198,14 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		consommateurRepo.save(c1);
 		Consommateur c2 = new Consommateur(null,
 				new Person(null, "CHARPENTIER", "Pierre", "pier", "pier123", 35, 
-						new Adress(null, 15, "Rue du Moulin", "92800", "Puteaux", 1646, 15161)));
+						new Adress(null, 1, "Esplanade du cardo", "44700", "Orvault", 353536.49, 6694653.56)));
 		consommateurRepo.save(c2);
 		Consommateur c3 = new Consommateur(null,
 				new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
-						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine", 46313, 15652)));
+						new Adress(null, 4, "rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
 		consommateurRepo.save(c3); 
 
-		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 87, "Rue de France", "06000", "Nice", 21615, 4153)), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
+		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 1, "Esplanade du cardo", "44700", "Orvault", 353536.49, 6694653.56)), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
 		producteurRepo.save(p1);
 		Producteur p2 = new Producteur(null, "Nos Ancêtres les Gaulois",new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg",416, 1615)),Arrays.asList(pr2, pr4, pr5, pr6));
 		producteurRepo.save(p2);
