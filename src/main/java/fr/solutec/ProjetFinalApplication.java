@@ -24,6 +24,7 @@ import fr.solutec.entities.Admin;
 import fr.solutec.entities.Adress;
 import fr.solutec.entities.Consommateur;
 import fr.solutec.entities.Image;
+import fr.solutec.entities.Panier;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
@@ -36,6 +37,7 @@ import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SousCategorieRepository;
+import fr.solutec.repository.panierRepository;
 import fr.solutec.repository.CategorieRepository;
 
 @SpringBootApplication
@@ -57,6 +59,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	private AdressRepository adressRepo;
 	@Autowired
 	private ImageRepository imageRepo;
+	@Autowired
+	private panierRepository panierRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
@@ -211,6 +215,10 @@ public class ProjetFinalApplication implements CommandLineRunner {
 						new Adress(null, 14, "Rue de Java", "45000", "Orléans")), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
 
 		producteurRepo.save(p3);
+		
+		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), new Consommateur(null, new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
+						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine"))));
+		panierRepo.save(pa1);
 
 		/*
 		 * String mysqlUrl = "jdbc:mysql://localhost/projet-final"; Connection con =
