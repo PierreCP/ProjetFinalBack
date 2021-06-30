@@ -24,6 +24,7 @@ import fr.solutec.entities.Admin;
 import fr.solutec.entities.Adress;
 import fr.solutec.entities.Consommateur;
 import fr.solutec.entities.Image;
+import fr.solutec.entities.Message;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
@@ -33,6 +34,7 @@ import fr.solutec.repository.AdminRepository;
 import fr.solutec.repository.AdressRepository;
 import fr.solutec.repository.ConsommateurRepository;
 import fr.solutec.repository.ImageRepository;
+import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SousCategorieRepository;
@@ -57,6 +59,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	private AdressRepository adressRepo;
 	@Autowired
 	private ImageRepository imageRepo;
+	@Autowired
+	private MessageRepository messageRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
@@ -209,8 +213,14 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		producteurRepo.save(p2);
 		Producteur p3 = new Producteur(null, "Brasserie Terneyre", new Person(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, 
 						new Adress(null, 14, "Rue de Java", "45000", "Orléans")), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
-
 		producteurRepo.save(p3);
+		
+		Message m1 = new Message(null,"Premier Message", a1.getPerson(), c1.getPerson());
+		messageRepo.save(m1);
+		Message m2 = new Message(null,"Deuxième Message", a1.getPerson(), p1.getPerson());
+		messageRepo.save(m2);
+		Message m3 = new Message(null,"Troisième Message", p1.getPerson(), c1.getPerson());
+		messageRepo.save(m3);
 
 		/*
 		 * String mysqlUrl = "jdbc:mysql://localhost/projet-final"; Connection con =
