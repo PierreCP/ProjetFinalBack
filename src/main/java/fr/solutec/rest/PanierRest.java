@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.solutec.entities.Panier;
 import fr.solutec.entities.Produit;
 import fr.solutec.repository.ProduitRepository;
-import fr.solutec.repository.panierRepository;
+import fr.solutec.repository.PanierRepository;
 
 @RestController
 @CrossOrigin("*")
 public class PanierRest {
 	@Autowired
-	private panierRepository panierRepo;
+	private PanierRepository panierRepo;
 	@Autowired
 	private ProduitRepository produitRepo;
 
@@ -62,6 +62,11 @@ public class PanierRest {
 			return false;
 		}
 		
+	}
+	
+	@PostMapping("panier")
+	public Panier savePanier(@RequestBody Panier p) {
+		return panierRepo.save(p);
 	}
 
 }

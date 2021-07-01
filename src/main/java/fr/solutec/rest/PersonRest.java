@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Adress;
 import fr.solutec.entities.Consommateur;
+import fr.solutec.entities.Panier;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
 import fr.solutec.repository.AdminRepository;
 import fr.solutec.repository.AdressRepository;
 import fr.solutec.repository.ConsommateurRepository;
+import fr.solutec.repository.PanierRepository;
 import fr.solutec.repository.PersonRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
@@ -47,6 +49,9 @@ public class PersonRest {
 
 	@Autowired
 	private ProduitRepository produitRepo;
+	
+	@Autowired
+	public PanierRepository panierRepo;
 
 	@PostMapping("person")
 	public Person savePerson(@RequestBody Person p) {
@@ -58,10 +63,16 @@ public class PersonRest {
 	@PostMapping("consommateur")
 	public Consommateur saveConsommateur(@RequestBody Consommateur c) {
 		Person p = c.getPerson();
-		pr.save(p);
-		return consRepo.save(c);
+		Person person = pr.save(p);
+		c.setPerson(person);
+		Consommateur cs = consRepo.save(c);
+		Panier panier = new Panier();
+		panier.setConsommateur(cs);
+		panierRepo.save(panier);
+		return cs;
 	}
-
+	
+	
 	@PostMapping("producteur")
 	public Producteur saveProducteur(@RequestBody Producteur p) {
 		Person u = p.getPerson();

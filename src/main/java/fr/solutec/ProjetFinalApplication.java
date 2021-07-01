@@ -37,7 +37,7 @@ import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SousCategorieRepository;
-import fr.solutec.repository.panierRepository;
+import fr.solutec.repository.PanierRepository;
 import fr.solutec.repository.CategorieRepository;
 
 @SpringBootApplication
@@ -60,7 +60,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	@Autowired
 	private ImageRepository imageRepo;
 	@Autowired
-	private panierRepository panierRepo;
+	private PanierRepository panierRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
@@ -207,7 +207,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		Consommateur c3 = new Consommateur(null,
 				new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
 						new Adress(null, 4, "rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
-		consommateurRepo.save(c3); 
+		consommateurRepo.save(c3);
 
 		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 1, "Esplanade du cardo", "44700", "Orvault", 353536.49, 6694653.56)), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
 		producteurRepo.save(p1);
