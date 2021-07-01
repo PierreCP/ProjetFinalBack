@@ -1,9 +1,10 @@
 package fr.solutec.entities;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -14,10 +15,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor @NoArgsConstructor @Data
 
 public class Consommateur{
-	@Id @GeneratedValue
+	@Id@Column(name = "person_id")
 	private Long id;
 	
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne/*(fetch = FetchType.LAZY, optional = false)*/
+	@MapsId
+	@JoinColumn(name = "person_id", nullable = false)
 	private Person person;
 	
 

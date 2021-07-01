@@ -25,7 +25,7 @@ import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SousCategorieRepository;
-import fr.solutec.repository.panierRepository;
+import fr.solutec.repository.PanierRepository;
 import fr.solutec.repository.CategorieRepository;
 
 @SpringBootApplication
@@ -50,7 +50,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	@Autowired
 	private MessageRepository messageRepo;
 	@Autowired
-	private panierRepository panierRepo;
+	private PanierRepository panierRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
@@ -196,15 +196,15 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		consommateurRepo.save(c2);
 		Consommateur c3 = new Consommateur(null,
 				new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
-						new Adress(null, 4, "Rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
-		consommateurRepo.save(c3); 
 
+						new Adress(null, 4, "Rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
+		consommateurRepo.save(c3);
+	
 		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 1, "Esplanade du cardo", "44700", "Orvault", 353536.49, 6694653.56)), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
 		producteurRepo.save(p1);
 		Producteur p2 = new Producteur(null, "Nos Ancêtres les Gaulois",new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg",416, 1615)),Arrays.asList(pr2, pr4, pr5, pr6));
 		producteurRepo.save(p2);
 		Producteur p3 = new Producteur(null, "Brasserie Terneyre", new Person(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, 
-
 						new Adress(null, 14, "Rue de Java", "45000", "Orléans", 4646,4512)), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
 		producteurRepo.save(p3);
 		
