@@ -33,10 +33,10 @@ public class MessageRest {
 		 if (pRepo.findById(e).isPresent() && pRepo.findById(r).isPresent()) {
 			 return mRepo.save(m);
 		 }
-		 else {
+		 else 
 			 return null;
 		 }
-	 }
+	 
 	 
 	 @GetMapping("getMessage/{id}")
 	 public Optional<Message> getMessage(@PathVariable Long id) {
