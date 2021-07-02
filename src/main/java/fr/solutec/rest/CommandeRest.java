@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.repository.CommandeRepository;
+import fr.solutec.repository.PanierRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.entities.*;
 @RestController @CrossOrigin("*")
@@ -19,6 +21,8 @@ public class CommandeRest {
 	private CommandeRepository commandeRepo;
 	@Autowired
 	private ProducteurRepository prodRepo;
+	@Autowired
+	private PanierRepository panierRepo;
 	
 	
 	@GetMapping("commandes/{idPers}")
@@ -114,6 +118,25 @@ public class CommandeRest {
 		}
 		}
 		return commandes;
+	}
+	
+	
+	@GetMapping("valider-commande/{idCom}")
+	public void validerCommande(@PathVariable Long idCom) {
+		Commande c = commandeRepo.findById(idCom).get();
+		c.setRecuperee(true);
+		commandeRepo.save(c);
+	}
+	
+	
+	@GetMapping("validation-panier/{idPanier}")
+	public void validationPanier(@PathVariable Long idPanier) {
+		Panier panier = panierRepo.findById(idPanier).get();
+		Commande commande = new Commande(null, panier.getConsommateur(), panier.produits, new java.util.Date(), false);
+		panier.produits = new ArrayList<Produit>();
+		commandeRepo.save(commande);
+		panierRepo.save(panier);
+		
 	}
 	
 }
