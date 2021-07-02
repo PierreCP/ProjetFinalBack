@@ -20,8 +20,24 @@ public class Produit {
 	private float prix;
 	private String saison;
 	
+	// Juste rajouté pour traiter lagestion des stocks mais pas lié à la base de données
+	private Long idProd;
+	
 	@ManyToOne
 	private SousCategorie sousCategorie;
+
+	public Produit(Long id, String nom, String description, int quantite, float prix, String saison,
+			SousCategorie sousCategorie) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.description = description;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.saison = saison;
+		this.sousCategorie = sousCategorie;
+	}
+	
 	
 	
 
