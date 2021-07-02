@@ -9,6 +9,7 @@ import fr.solutec.entities.SousCategorie;
 import fr.solutec.entities.Categorie;
 
 public interface SousCategorieRepository extends CrudRepository<SousCategorie, Long>{
+	public Optional<SousCategorie> findByNom(String nom);
 	//x12
 	/*public Optional<SousCategorie> findBySousCategorie(String name);
 

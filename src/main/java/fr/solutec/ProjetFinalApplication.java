@@ -155,41 +155,41 @@ public class ProjetFinalApplication implements CommandLineRunner {
 
 
 
-		Produit pr1 = new Produit(null, "Patate", "Sac 1Kg de pomme de terre de corse", 45, 3.99F, null, st7);
+		Produit pr1 = new Produit(null, "Patate", "Sac 1Kg de pomme de terre de corse", 45, 3.99F, null, st7, null);
 		produitRepo.save(pr1);
-		Produit pr2 = new Produit(null, "Camembert", "camembert de Normandie extra fondant", 23, 2.54F, null, st24);
+		Produit pr2 = new Produit(null, "Camembert", "camembert de Normandie extra fondant", 23, 2.54F, null, st24, null);
 		produitRepo.save(pr2);
-		Produit pr3 = new Produit(null, "Bière", "Bière Cuvée des Trolls 8° 1L", 150, 6.77F, null, st21);
+		Produit pr3 = new Produit(null, "Bière", "Bière Cuvée des Trolls 8° 1L", 150, 6.77F, null, st21, null);
 		produitRepo.save(pr3);
-		Produit pr4 = new Produit(null, "Vacherin", "Vacherin des montagnes affiné", 2, 4.86F, null, st24);
+		Produit pr4 = new Produit(null, "Vacherin", "Vacherin des montagnes affiné", 2, 4.86F, null, st24, null);
 		produitRepo.save(pr4);
-		Produit pr5 = new Produit(null, "Chevre", "Chèvre frais aux épices douces", 10, 3.45F, null, st24);
+		Produit pr5 = new Produit(null, "Chevre", "Chèvre frais aux épices douces", 10, 3.45F, null, st24, null);
 		produitRepo.save(pr5);
-		Produit pr6 = new Produit(null, "Comté", "Comté affiné 18 mois", 8, 8.52F, null, st24);
+		Produit pr6 = new Produit(null, "Comté", "Comté affiné 18 mois", 8, 8.52F, null, st24, null);
 		produitRepo.save(pr6);
-		Produit pr7 = new Produit(null, "Champagne ALBERT", "Champagne 1995", 15, 22.52F, null, st19);
+		Produit pr7 = new Produit(null, "Champagne ALBERT", "Champagne 1995", 15, 22.52F, null, st19, null);
 		produitRepo.save(pr7);
-		Produit pr8 = new Produit(null, "Abricot", "Abricots délicieux", 15, 1.52F, null, st1);
+		Produit pr8 = new Produit(null, "Abricot", "Abricots délicieux", 15, 1.52F, null, st1, null);
 		produitRepo.save(pr8);
-		Produit pr9 = new Produit(null, "Raisin", "", 15, 1.52F, null, st2);
+		Produit pr9 = new Produit(null, "Raisin", "", 15, 1.52F, null, st2, null);
 		produitRepo.save(pr9);
-		Produit pr10 = new Produit(null, "Pommes", "", 15, 1.52F, null, st3);
+		Produit pr10 = new Produit(null, "Pommes", "", 15, 1.52F, null, st3, null);
 		produitRepo.save(pr10);
-		Produit pr11 = new Produit(null, "Mandarine", "", 15, 1.52F, null, st4);
+		Produit pr11 = new Produit(null, "Mandarine", "", 15, 1.52F, null, st4, null);
 		produitRepo.save(pr11);
-		Produit pr12 = new Produit(null, "Melon", "", 15, 1.52F, null, st5);
+		Produit pr12 = new Produit(null, "Melon", "", 15, 1.52F, null, st5, null);
 		produitRepo.save(pr12);
-		Produit pr13 = new Produit(null, "Ananas", "", 15, 1.52F, null, st6);
+		Produit pr13 = new Produit(null, "Ananas", "", 15, 1.52F, null, st6, null);
 		produitRepo.save(pr13);
-		Produit pr14 = new Produit(null, "Choux-fleur", "", 15, 1.52F, null, st8);
+		Produit pr14 = new Produit(null, "Choux-fleur", "", 15, 1.52F, null, st8, null);
 		produitRepo.save(pr14);
-		Produit pr15 = new Produit(null, "Potiron", "", 15, 1.52F, null, st9);
+		Produit pr15 = new Produit(null, "Potiron", "", 15, 1.52F, null, st9, null);
 		produitRepo.save(pr15);
-		Produit pr16 = new Produit(null, "Champignon de paris", "", 15, 1.52F, null, st10);
+		Produit pr16 = new Produit(null, "Champignon de paris", "", 15, 1.52F, null, st10, null);
 		produitRepo.save(pr16);
-		Produit pr17 = new Produit(null, "Vin rouge de SQY", "Vin rouge d'exception de 1995", 15, 1.52F, null, st16);
+		Produit pr17 = new Produit(null, "Vin rouge de SQY", "Vin rouge d'exception de 1995", 15, 1.52F, null, st16, null);
 		produitRepo.save(pr17);
-		Produit pr18 = new Produit(null, "Pêche", "", 15, 1.52F, null, st1);
+		Produit pr18 = new Produit(null, "Pêche", "", 15, 1.52F, null, st1, null);
 		produitRepo.save(pr18);
 
 		Admin a1 = new Admin(null, new Person(null, "Jean", "Test", "1", "0", 10, 
