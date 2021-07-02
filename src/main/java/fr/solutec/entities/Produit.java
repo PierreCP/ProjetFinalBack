@@ -19,6 +19,7 @@ public class Produit {
 	private int quantite;
 	private float prix;
 	private String saison;
+	private int quantiteCons;
 	
 	// Juste rajouté pour traiter lagestion des stocks mais pas lié à la base de données
 	private Long idProd;

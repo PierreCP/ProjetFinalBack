@@ -76,12 +76,12 @@ public class PanierRest {
 			Optional<Produit> pdt = produitRepo.findById(id);
 			if (pdt.isPresent()) {
 				if (panier.get().produits.contains(pdt.get())) {
-					int q = pdt.get().getQuantite();
-					pdt.get().setQuantite(q+1);
+					int q = pdt.get().getQuantiteCons();
+					pdt.get().setQuantiteCons(q+1);
 					panierRepo.save(panier.get());
 					return true;
 				} else {
-					pdt.get().setQuantite(1);
+					pdt.get().setQuantiteCons(1);
 					panier.get().produits.add(pdt.get());
 					panierRepo.save(panier.get());
 					return true;	
