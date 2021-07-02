@@ -216,20 +216,7 @@ public class PersonRest {
 			return null;
 		}
 	}
-	/*
-	 * @PutMapping("person/produit/{id}/{nom}/{quantite}") public Producteur
-	 * ModifyProduitProducteur(@PathVariable Long id, @PathVariable String
-	 * nom, @PathVariable int quantite) { Produit newProd =
-	 * produitRepo.findByNom(nom); if (prodRepo.findByPersonId(id).isPresent()) {
-	 * Producteur p = prodRepo.findByPersonId(id).get(); List<Produit> prod =
-	 * p.getProduits(); for (Produit produit : prod) { if
-	 * (produit.getId().equals(newProd.getId())) {
-	 * produit.setQuantite(produit.getQuantite() + quantite); p.setProduits(prod);
-	 * break; } else { newProd.setQuantite(quantite); prod.add(newProd);
-	 * p.setProduits(prod); break; } } return prodRepo.save(p); } else { return
-	 * null; } }
-	 */
-
+	
 	@GetMapping("producteur/produit/{id}/{sousCategorie}")
 	public Iterable<Produit> getSousCategorieProduitsProducteur(@PathVariable Long id,
 			@PathVariable String sousCategorie) {
