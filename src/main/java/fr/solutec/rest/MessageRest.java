@@ -35,8 +35,15 @@ public class MessageRest {
 	 
 	 @PostMapping("newMessage")
 	 public Message newMessage(@RequestBody Message m) {
-		 return mRepo.save(m);
-	 }
+		 Long e = m.getEmetteur().getId();
+		 Long r = m.getReceveur().getId();
+		 if (pRepo.findById(e).isPresent() && pRepo.findById(r).isPresent()) {
+			 return mRepo.save(m);
+		 }
+		 else 
+			 return null;
+		 }
+	 
 	 
 	 @GetMapping("getMessage/{id}")
 	 public Optional<Message> getMessage(@PathVariable Long id) {
