@@ -25,7 +25,7 @@ public class Producteur{
 	private Person person;
 	
 	@ManyToMany
-	private List<Produit> produits;
+	public List<Produit> produits;
 
 	public Producteur(Long id, String nomMagasin, Person person, List<Produit> produits) {
 		super();

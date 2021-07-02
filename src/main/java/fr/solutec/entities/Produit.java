@@ -3,6 +3,7 @@ package fr.solutec.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -39,7 +40,8 @@ public class Produit {
 		this.sousCategorie = sousCategorie;
 	}
 	
-	
+	@Lob
+	private byte[] image;
 	
 
 }

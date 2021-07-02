@@ -156,8 +156,8 @@ public class PersonRest {
 	@GetMapping("person/{id}/produit/{nom}/{quantite}/{prix}/{description}")
 	public Producteur addProduitProducteur(@PathVariable Long id, @PathVariable String nom,
 			@PathVariable int quantite, @PathVariable float prix, @PathVariable String description) {
-		if (prodRepo.findByPersonId(id).isPresent()) {
-			Producteur p = prodRepo.findByPersonId(id).get();
+		if (prodRepo.findById(id).isPresent()) {
+			Producteur p = prodRepo.findById(id).get();
 			List<Produit> prod = new ArrayList<Produit>();
 			for (Produit produit : p.getProduits()) {
 				prod.add(produit);
