@@ -1,20 +1,7 @@
 package fr.solutec;
 
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.util.Arrays;
-import java.util.Optional;
-
-import javax.sql.rowset.serial.SerialBlob;
-
-import org.hibernate.type.SerializableToBlobType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.solutec.entities.Admin;
 import fr.solutec.entities.Adress;
 import fr.solutec.entities.Consommateur;
-import fr.solutec.entities.Image;
+import fr.solutec.entities.Message;
 import fr.solutec.entities.Panier;
 import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
@@ -34,10 +21,11 @@ import fr.solutec.repository.AdminRepository;
 import fr.solutec.repository.AdressRepository;
 import fr.solutec.repository.ConsommateurRepository;
 import fr.solutec.repository.ImageRepository;
+import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SousCategorieRepository;
-import fr.solutec.repository.panierRepository;
+import fr.solutec.repository.PanierRepository;
 import fr.solutec.repository.CategorieRepository;
 
 @SpringBootApplication
@@ -60,7 +48,9 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	@Autowired
 	private ImageRepository imageRepo;
 	@Autowired
-	private panierRepository panierRepo;
+	private MessageRepository messageRepo;
+	@Autowired
+	private PanierRepository panierRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
@@ -206,20 +196,27 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		consommateurRepo.save(c2);
 		Consommateur c3 = new Consommateur(null,
 				new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
-						new Adress(null, 4, "rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
-		consommateurRepo.save(c3); 
 
+						new Adress(null, 4, "Rue du haras", "44119", "Treillieres", 350368.41, 6702596.46)));
+		consommateurRepo.save(c3);
+	
 		Producteur p1 = new Producteur(null, "Chez Jojo", new Person(null, "BANKA", "Joel", "jojo", "jojo123", 84, new Adress(null, 1, "Esplanade du cardo", "44700", "Orvault", 353536.49, 6694653.56)), Arrays.asList(pr12, pr2, pr3, pr4, pr5, pr7, pr8, pr18));
 		producteurRepo.save(p1);
 		Producteur p2 = new Producteur(null, "Nos Ancêtres les Gaulois",new Person(null, "BONHOMME", "Clovis", "clo", "clo123", 42, new Adress(null, 22, "Rue Anguleuse", "67100", "Strasbourg",416, 1615)),Arrays.asList(pr2, pr4, pr5, pr6));
 		producteurRepo.save(p2);
 		Producteur p3 = new Producteur(null, "Brasserie Terneyre", new Person(null, "TERNEYRE", "Benoit", "ben", "ben123", 84, 
 						new Adress(null, 14, "Rue de Java", "45000", "Orléans", 4646,4512)), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
-
 		producteurRepo.save(p3);
 		
-		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), new Consommateur(null, new Person(null, "MORISSET", "Guillaume", "gui", "gui123", 54, 
-						new Adress(null, 3, "Rue du Code", "07400", "Alba-la-Romaine"))));
+		Message m1 = new Message(null,"Premier Message", a1.getPerson(), c1.getPerson());
+		messageRepo.save(m1);
+		Message m2 = new Message(null,"Deuxième Message", a1.getPerson(), p1.getPerson());
+		messageRepo.save(m2);
+		Message m3 = new Message(null,"Troisième Message", p1.getPerson(), c1.getPerson());
+		messageRepo.save(m3);
+
+		
+		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), c3);
 		panierRepo.save(pa1);
 
 		/*
