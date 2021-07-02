@@ -10,24 +10,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.repository.CommandeRepository;
+import fr.solutec.repository.ProducteurRepository;
 import fr.solutec.entities.*;
 @RestController @CrossOrigin("*")
 public class CommandeRest {
 
 	@Autowired
 	private CommandeRepository commandeRepo;
+	@Autowired
+	private ProducteurRepository prodRepo;
 	
 	
-	@GetMapping("commandes/{idProd}")
-	public List<Commande> getCommandesById(@PathVariable Long idProd){
+	@GetMapping("commandes/{idPers}")
+	public List<Commande> getCommandesById(@PathVariable Long idPers){
 		Iterable<Commande> allCommandes = commandeRepo.findAll();
-		
+		Producteur prod = prodRepo.findByPersonId(idPers).get();
 		List<Commande> commandes = new ArrayList<Commande>();
 		
 		for (Commande commande : allCommandes) {
 			Commande currentCommande = new Commande();
 			for (Produit produit : commande.contenuCommande) {
-				if (produit.getIdProd() == idProd) {
+				if (produit.getIdProd() == prod.getId()) {
 					if (currentCommande.getId() == null) {
 						currentCommande.setId(commande.getId());
 						currentCommande.setDate(commande.getDate());
