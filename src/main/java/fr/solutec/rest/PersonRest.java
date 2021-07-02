@@ -126,7 +126,6 @@ public class PersonRest {
 	@GetMapping("producteur/person/{id}")
 	public Optional<Producteur> getProducteurByIdPerson(@PathVariable Long id) {
 		return prodRepo.findByPersonId(id);
-
 	}
 
 	@GetMapping("producteur/produit/{id}")
