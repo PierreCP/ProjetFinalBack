@@ -25,10 +25,10 @@ public class ProduitRest {
 		return produitRepo.findAll();
 	}
 	
-	/*@GetMapping("produit/{id}")
+	@GetMapping("produit/{id}")
 	public Optional<Produit> getOneProduit(@PathVariable Long id) {
 		return produitRepo.findById(id);
-	}*/
+	}
 	
 	@GetMapping("produit/{nom}")
 	public Produit getOneProduitByNom(@PathVariable String nom) {

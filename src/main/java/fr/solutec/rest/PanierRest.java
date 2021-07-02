@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Panier;
+import fr.solutec.entities.Person;
 import fr.solutec.entities.Produit;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.PanierRepository;
+import fr.solutec.repository.PersonRepository;
 
 @RestController
 @CrossOrigin("*")
@@ -23,6 +26,8 @@ public class PanierRest {
 	private PanierRepository panierRepo;
 	@Autowired
 	private ProduitRepository produitRepo;
+	@Autowired
+	private PersonRepository personRepo;
 
 	@GetMapping("panier/{id}")
 	private Optional<Panier> getPanierFromConsommateur(@PathVariable Long id) {
@@ -67,6 +72,24 @@ public class PanierRest {
 	@PostMapping("panier")
 	public Panier savePanier(@RequestBody Panier p) {
 		return panierRepo.save(p);
+	}
+	
+	/*@GetMapping("panier/user/{id}")
+	public Long getOneProduit(@PathVariable Long id) {
+		Optional<Panier> panier = Optional.ofNullable(new Panier());
+		panier = panierRepo.findByConsommateurId(id);
+		return panier.get().getId();
+	}*/
+	
+	@GetMapping("panier/produit/{id}")
+	public List<Produit> getOneProduit(@PathVariable Long id) {
+		Panier panier = panierRepo.findById(id).get();
+		return panier.getProduits(); 
+	}
+	
+	@GetMapping("panier/user/{id}")
+	public Optional<Panier> getOnePanier(@PathVariable Long id) {
+		return panierRepo.findByConsommateurId(id);
 	}
 
 }
