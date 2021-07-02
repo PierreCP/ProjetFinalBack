@@ -189,6 +189,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		produitRepo.save(pr17);
 		Produit pr18 = new Produit(null, "Pêche", "", 15, 1.52F, null, st1);
 		produitRepo.save(pr18);
+		Produit pr19 = new Produit(null, "Chmpagne cuvée 1995", "", 12, 1.52F, null, st19);
+		produitRepo.save(pr19);
 
 		Admin a1 = new Admin(null, new Person(null, "Jean", "Test", "1", "0", 10, 
 				new Adress(null, 13, "Rue du Test", "75007", "Paris", 132, 1542)));

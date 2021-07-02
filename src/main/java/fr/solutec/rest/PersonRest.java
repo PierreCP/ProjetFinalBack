@@ -185,6 +185,7 @@ public class PersonRest {
 			for (Produit produit : prod) {
 				if (produit.getNom().equals(produitRepo.findByNom(nom).getNom())) {
 					prod.remove(produit);
+					p.setProduits(prod);
 					return prodRepo.save(p);
 				}
 			}
