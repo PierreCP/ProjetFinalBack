@@ -241,7 +241,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		produitRepo.save(pr8);
 		produitRepo.save(pr9);
 		
-		Commande com1 = new Commande(null, c3, Arrays.asList(pr3, pr8), new java.util.Date(),false);
+		Commande com1 = new Commande(null, c3, Arrays.asList(pr3, pr4, pr8), new java.util.Date(),false);
 		comRepo.save(com1);
 		Commande com2 = new Commande(null, c3, Arrays.asList(pr4, pr9), new java.util.Date(),true);
 		comRepo.save(com2);
