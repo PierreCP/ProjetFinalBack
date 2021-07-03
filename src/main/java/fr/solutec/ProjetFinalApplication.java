@@ -1,6 +1,9 @@
 package fr.solutec;
 
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +20,7 @@ import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.SousCategorie;
 import fr.solutec.entities.Categorie;
+import fr.solutec.entities.Commande;
 import fr.solutec.repository.AdminRepository;
 import fr.solutec.repository.AdressRepository;
 import fr.solutec.repository.ConsommateurRepository;
@@ -27,6 +31,7 @@ import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SousCategorieRepository;
 import fr.solutec.repository.PanierRepository;
 import fr.solutec.repository.CategorieRepository;
+import fr.solutec.repository.CommandeRepository;
 
 @SpringBootApplication
 public class ProjetFinalApplication implements CommandLineRunner {
@@ -51,7 +56,10 @@ public class ProjetFinalApplication implements CommandLineRunner {
 	private MessageRepository messageRepo;
 	@Autowired
 	private PanierRepository panierRepo;
-
+	@Autowired
+	private CommandeRepository comRepo;
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinalApplication.class, args);
 		System.out.println("Lancement terminé");
@@ -181,6 +189,8 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		produitRepo.save(pr17);
 		Produit pr18 = new Produit(null, "Pêche", "", 15, 1.52F, null, st1, null);
 		produitRepo.save(pr18);
+		Produit pr19 = new Produit(null, "Chmpagne cuvée 1995", "", 12, 1.52F, null, st19);
+		produitRepo.save(pr19);
 
 		Admin a1 = new Admin(null, new Person(null, "Jean", "Test", "1", "0", 10, 
 				new Adress(null, 13, "Rue du Test", "75007", "Paris", 132, 1542)));
@@ -208,6 +218,9 @@ public class ProjetFinalApplication implements CommandLineRunner {
 						new Adress(null, 14, "Rue de Java", "45000", "Orléans", 4646,4512)), Arrays.asList(pr3, pr8, pr16, pr17, pr15, pr12));
 		producteurRepo.save(p3);
 		
+		
+		
+		
 		Message m1 = new Message(null,"Premier Message", a1.getPerson(), c1.getPerson());
 		messageRepo.save(m1);
 		Message m2 = new Message(null,"Deuxième Message", a1.getPerson(), p1.getPerson());
@@ -218,7 +231,22 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		
 		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), c3);
 		panierRepo.save(pa1);
-
+		
+		pr3.setIdProd(p1.getId());
+		pr4.setIdProd(p1.getId());
+		pr8.setIdProd(p2.getId());
+		pr9.setIdProd(p2.getId());
+		produitRepo.save(pr3);
+		produitRepo.save(pr4);
+		produitRepo.save(pr8);
+		produitRepo.save(pr9);
+		
+		Commande com1 = new Commande(null, c3, Arrays.asList(pr3, pr8), new java.util.Date(),false);
+		comRepo.save(com1);
+		Commande com2 = new Commande(null, c3, Arrays.asList(pr4, pr9), new java.util.Date(),true);
+		comRepo.save(com2);
+		
+		
 		/*
 		 * String mysqlUrl = "jdbc:mysql://localhost/projet-final"; Connection con =
 		 * DriverManager.getConnection(mysqlUrl, "root", ""); String query =

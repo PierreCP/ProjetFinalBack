@@ -88,8 +88,15 @@ public class ProduitRest {
 
 	}
 	
+
 	@GetMapping("SousCategorie/{nom}")
 	public Optional<SousCategorie> findSousCategorie(@PathVariable String nom) {
 		return souscatRepo.findByNom(nom);
 	}
+
+
+	
+	
+
+
 }
