@@ -153,41 +153,41 @@ public class ProjetFinalApplication implements CommandLineRunner {
 
 
 
-		Produit pr1 = new Produit(null, "Patate", "Sac 1Kg de pomme de terre de corse", 45, 3.99F, null, st7, null);
+		Produit pr1 = new Produit(null, "Patate", "Sac 1Kg de pomme de terre de corse", 45, 3.99F, null, st7);
 		produitRepo.save(pr1);
-		Produit pr2 = new Produit(null, "Camembert", "camembert de Normandie extra fondant", 23, 2.54F, null, st24, null);
+		Produit pr2 = new Produit(null, "Camembert", "camembert de Normandie extra fondant", 23, 2.54F, null, st24);
 		produitRepo.save(pr2);
-		Produit pr3 = new Produit(null, "Bière", "Bière Cuvée des Trolls 8° 1L", 150, 6.77F, null, st21, null);
+		Produit pr3 = new Produit(null, "Bière", "Bière Cuvée des Trolls 8° 1L", 150, 6.77F, null, st21);
 		produitRepo.save(pr3);
-		Produit pr4 = new Produit(null, "Vacherin", "Vacherin des montagnes affiné", 2, 4.86F, null, st24, null);
+		Produit pr4 = new Produit(null, "Vacherin", "Vacherin des montagnes affiné", 2, 4.86F, null, st24);
 		produitRepo.save(pr4);
-		Produit pr5 = new Produit(null, "Chevre", "Chèvre frais aux épices douces", 10, 3.45F, null, st24, null);
+		Produit pr5 = new Produit(null, "Chevre", "Chèvre frais aux épices douces", 10, 3.45F, null, st24);
 		produitRepo.save(pr5);
-		Produit pr6 = new Produit(null, "Comté", "Comté affiné 18 mois", 8, 8.52F, null, st24, null);
+		Produit pr6 = new Produit(null, "Comté", "Comté affiné 18 mois", 8, 8.52F, null, st24);
 		produitRepo.save(pr6);
-		Produit pr7 = new Produit(null, "Champagne ALBERT", "Champagne 1995", 15, 22.52F, null, st19, null);
+		Produit pr7 = new Produit(null, "Champagne ALBERT", "Champagne 1995", 15, 22.52F, null, st19);
 		produitRepo.save(pr7);
-		Produit pr8 = new Produit(null, "Abricot", "Abricots délicieux", 15, 1.52F, null, st1, null);
+		Produit pr8 = new Produit(null, "Abricot", "Abricots délicieux", 15, 1.52F, null, st1);
 		produitRepo.save(pr8);
-		Produit pr9 = new Produit(null, "Raisin", "", 15, 1.52F, null, st2, null);
+		Produit pr9 = new Produit(null, "Raisin", "", 15, 1.52F, null, st2);
 		produitRepo.save(pr9);
-		Produit pr10 = new Produit(null, "Pommes", "", 15, 1.52F, null, st3, null);
+		Produit pr10 = new Produit(null, "Pommes", "", 15, 1.52F, null, st3);
 		produitRepo.save(pr10);
-		Produit pr11 = new Produit(null, "Mandarine", "", 15, 1.52F, null, st4, null);
+		Produit pr11 = new Produit(null, "Mandarine", "", 15, 1.52F, null, st4);
 		produitRepo.save(pr11);
-		Produit pr12 = new Produit(null, "Melon", "", 15, 1.52F, null, st5, null);
+		Produit pr12 = new Produit(null, "Melon", "", 15, 1.52F, null, st5);
 		produitRepo.save(pr12);
-		Produit pr13 = new Produit(null, "Ananas", "", 15, 1.52F, null, st6, null);
+		Produit pr13 = new Produit(null, "Ananas", "", 15, 1.52F, null, st6);
 		produitRepo.save(pr13);
-		Produit pr14 = new Produit(null, "Choux-fleur", "", 15, 1.52F, null, st8, null);
+		Produit pr14 = new Produit(null, "Choux-fleur", "", 15, 1.52F, null, st8);
 		produitRepo.save(pr14);
-		Produit pr15 = new Produit(null, "Potiron", "", 15, 1.52F, null, st9, null);
+		Produit pr15 = new Produit(null, "Potiron", "", 15, 1.52F, null, st9);
 		produitRepo.save(pr15);
-		Produit pr16 = new Produit(null, "Champignon de paris", "", 15, 1.52F, null, st10, null);
+		Produit pr16 = new Produit(null, "Champignon de paris", "", 15, 1.52F, null, st10);
 		produitRepo.save(pr16);
-		Produit pr17 = new Produit(null, "Vin rouge de SQY", "Vin rouge d'exception de 1995", 15, 1.52F, null, st16, null);
+		Produit pr17 = new Produit(null, "Vin rouge de SQY", "Vin rouge d'exception de 1995", 15, 1.52F, null, st16);
 		produitRepo.save(pr17);
-		Produit pr18 = new Produit(null, "Pêche", "", 15, 1.52F, null, st1, null);
+		Produit pr18 = new Produit(null, "Pêche", "", 15, 1.52F, null, st1);
 		produitRepo.save(pr18);
 		Produit pr19 = new Produit(null, "Chmpagne cuvée 1995", "", 12, 1.52F, null, st19);
 		produitRepo.save(pr19);
@@ -241,7 +241,7 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		produitRepo.save(pr8);
 		produitRepo.save(pr9);
 		
-		Commande com1 = new Commande(null, c3, Arrays.asList(pr3, pr8), new java.util.Date(),false);
+		Commande com1 = new Commande(null, c3, Arrays.asList(pr3, pr4, pr8), new java.util.Date(),false);
 		comRepo.save(com1);
 		Commande com2 = new Commande(null, c3, Arrays.asList(pr4, pr9), new java.util.Date(),true);
 		comRepo.save(com2);

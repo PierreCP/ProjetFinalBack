@@ -20,3 +20,4 @@ public class SousCategorie {
 	@ManyToOne
 	private Categorie categorie;
 }
+ 

@@ -40,11 +40,8 @@ public class Produit {
 		this.sousCategorie = sousCategorie;
 	}
 	
-	
 	@Lob
 	private byte[] image;
-
-	
 	
 
 }
