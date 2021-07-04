@@ -281,8 +281,29 @@ public class PersonRest {
 	@PutMapping("person/{id}")
 	public Person putPerson(@RequestBody Person p, @PathVariable Long id) {
 		if (pr.findById(id).isPresent()) {
+			Person personneIn = pr.findById(id).get();
+			Adress adressIn = personneIn.getAdresse();
+			Long idAdresse = adressIn.getId();
+			if (adressRepo.findById(idAdresse).isPresent()) {
+				Adress adressOut = p.getAdresse();
+				adressOut.setId(idAdresse);
+				adressRepo.save(adressOut);
+			}
 			p.setId(id);
 			return pr.save(p);
+		} else {
+			return null;
+		}
+	}
+	
+	@PutMapping("prod/{id}")
+	public Producteur putProd(@RequestBody Producteur p, @PathVariable Long id) {
+		if (prodRepo.findById(id).isPresent()) {
+			Producteur prodIn = prodRepo.findById(id).get();
+			putPerson(p.getPerson(), prodIn.getPerson().getId());
+			p.setId(id);
+			p.setProduits(prodIn.getProduits());
+			return prodRepo.save(p);
 		} else {
 			return null;
 		}
