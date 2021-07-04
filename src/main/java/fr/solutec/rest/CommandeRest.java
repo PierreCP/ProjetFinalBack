@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,13 @@ public class CommandeRest {
 	private ProducteurRepository prodRepo;
 	@Autowired
 	private PanierRepository panierRepo;
+	
+	
+	@GetMapping("commandes-perso/{idPers}")
+	public Iterable<Commande> getCommandesPerso(@PathVariable Long idPers){
+		return commandeRepo.findAllByConsomId(idPers);
+	}
+	
 	
 	
 	@GetMapping("commandes/{idPers}")
