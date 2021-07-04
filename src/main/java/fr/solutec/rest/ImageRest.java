@@ -42,7 +42,9 @@ public class ImageRest {
 	
 	@PutMapping("image/{id}")
 	public Produit setImageProduit(@RequestBody byte[] img, @PathVariable Long id) {
+		System.out.println("requête lancé");
 		pr.findById(id).get().setImage(img);
+		System.out.println("image modifiée");
 		return pr.save(pr.findById(id).get());
 	}
 }
