@@ -231,6 +231,10 @@ public class ProjetFinalApplication implements CommandLineRunner {
 		
 		Panier pa1 = new Panier(null, Arrays.asList(pr3, pr8), c3);
 		panierRepo.save(pa1);
+		Panier pa2 = new Panier(null, null, c1);
+		panierRepo.save(pa2);
+		Panier pa3 = new Panier(null, null, c2);
+		panierRepo.save(pa3);
 		
 		pr3.setIdProd(p1.getId());
 		pr4.setIdProd(p1.getId());
