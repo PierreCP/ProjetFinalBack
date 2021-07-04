@@ -14,8 +14,6 @@ import lombok.NoArgsConstructor;
 public class Image {
 	@Id @GeneratedValue
 	private Long id;
-	private String titre;
-	private String commentaire;
 	@Lob
 	private byte[] img;
 

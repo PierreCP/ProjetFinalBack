@@ -1,6 +1,5 @@
 package fr.solutec.rest;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.solutec.entities.Person;
 import fr.solutec.entities.Producteur;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.SousCategorie;
@@ -26,10 +24,9 @@ public class ProduitRest {
 
 	@Autowired ProduitRepository produitRepo;
 
+	@Autowired ProducteurRepository producteurRepo;
+	
 	@Autowired SousCategorieRepository souscatRepo;
-
-	@Autowired
-	private ProducteurRepository producteurRepo;
 
 
 	@GetMapping("produit")
@@ -56,6 +53,21 @@ public class ProduitRest {
 	public Iterable<Produit> getAllProduitBySousCategorie(@PathVariable String categorieSousType) {
 		return produitRepo.findBySousCategorieNom(categorieSousType);
 	}
+	
+	@PostMapping("produit/id")
+	public Long saveProduitGetId(@RequestBody Produit p) {
+		produitRepo.save(p);
+		return p.getId();
+	}
+	/*
+	@GetMapping("lier/{id_produit}/{id_producteur}")
+	@Modifying
+	@Query(value ="INSERT INTO producteur_produits(produits_id, producteur_id) VALUES (:id_produit, :id_producteur)",
+	  nativeQuery = true)
+	public void lierProduitProducteur(@Param("id_produit") Long id_produit, @Param("id_producteur") Long id_producteur) {
+		
+	}
+	*/
 
 	@GetMapping("SousCategorie/{nom}")
 	public Optional<SousCategorie> findSousCategorie(@PathVariable String nom) {

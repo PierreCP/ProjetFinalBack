@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import fr.solutec.entities.SousCategorie;
 
 public interface SousCategorieRepository extends CrudRepository<SousCategorie, Long>{
-	
 	public Optional<SousCategorie> findByNom(String nom);
 	//x12
 	/*public Optional<SousCategorie> findBySousCategorie(String name);
